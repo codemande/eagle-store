@@ -1,5 +1,19 @@
+:root{
+  /* SIZES*/
+  --homeHeroText-container-height: 90%;
+
+  /* MARGINS */
+  --homeHeroText-wrap-margin-top: -50px;
+
+  /* FONT-SIZES */
+  --homeHeroIntro-fontSize: 18px;
+
+  /* FONT-WEIGHTS */
+  --homeHeroIntro-fontWeight: 200;
+}
+
 .homeHeroText-container{
-  height: 90%;
+  height: var(--homeHeroText-container-height);
   padding: auto;
 }
 
@@ -9,7 +23,7 @@
   justify-content: center;
   align-items: center;
   height: 100%;
-  margin-top: -50px;
+  margin-top: var(--homeHeroText-wrap-margin-top);
 }
 
 .homeHeroText-container p{
@@ -17,8 +31,8 @@
 }
 
 .homeHeroText-intro{
-  font-size: 18px;
-  font-weight: 200;
+  font-size: var(--homeHeroIntro-fontSize);
+  font-weight: var(--homeHeroIntro-fontWeight);
   letter-spacing: 4px;
 }
 

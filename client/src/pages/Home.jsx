@@ -1,3 +1,4 @@
+import Fixtures from "../components/Fixtures";
 import Header from "../components/Header";
 import HomeHeroText from "../components/HomeHeroText";
 import "./styles/Home.css";
@@ -12,12 +13,12 @@ function Home() {
           <HomeHeroText/>
         </div>      
       </div>
-      <h1>hello</h1>
-      <h1>hello</h1>
-      <h1>hello</h1>
-      <h1>hello</h1>
-      <h1>hello</h1>
-      <h1>hello</h1>
+
+      <div className="home-fixtures-trending">
+        <Fixtures/>
+        <hr />
+      </div>
+      
     </div>
   )
 }

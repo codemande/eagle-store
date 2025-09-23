@@ -26,6 +26,11 @@
   right: 0;
 }
 
+.home-fixtures-trending{
+  width: 80vw;
+  margin: 30px auto;
+}
+
 /* === MEDIA QUERIES === */
 @media (max-width: 768px) {
   .hero-home-page-container{
