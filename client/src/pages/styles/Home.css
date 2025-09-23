@@ -25,3 +25,10 @@
   left: 0;
   right: 0;
 }
+
+/* === MEDIA QUERIES === */
+@media (max-width: 768px) {
+  .hero-home-page-container{
+   height: 60vh;
+  }
+} 

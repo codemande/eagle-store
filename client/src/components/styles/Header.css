@@ -3,7 +3,7 @@
   --text-color: white;
 
   /* HOVER COLORS */
-  --hover-color: rgb(40, 164, 40);
+  --hover-color: hsla(95, 66%, 27%, 0.99);
 
   /* SIZES */
   --header-logo-height: 70px;
@@ -37,6 +37,7 @@
   width: var(--header-desktop-width); 
   margin: 0 auto;
   justify-content: space-between;
+  padding-top: 15px;
 }
 
 .header-logo-container{
@@ -149,6 +150,10 @@ li a:hover{
   background: white;
   border-top: 1px solid var(--border);
   animation: slideDown 0.3s ease forwards;
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 100;
 }
 
 @keyframes slideDown {

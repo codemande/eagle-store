@@ -1,4 +1,5 @@
 import Header from "../components/Header";
+import HomeHeroText from "../components/HomeHeroText";
 import "./styles/Home.css";
 
 function Home() {
@@ -8,9 +9,15 @@ function Home() {
       <div className="hero-home-page-container">
         <div className="hero-page-overlay">
           <Header/> 
-        </div>        
+          <HomeHeroText/>
+        </div>      
       </div>
-      
+      <h1>hello</h1>
+      <h1>hello</h1>
+      <h1>hello</h1>
+      <h1>hello</h1>
+      <h1>hello</h1>
+      <h1>hello</h1>
     </div>
   )
 }
