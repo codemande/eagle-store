@@ -1,9 +1,16 @@
 import Header from "../components/Header";
+import "./styles/Home.css";
 
 function Home() {
   return(
-    <div>
-      <Header/>
+    <div className="home-page-container">
+
+      <div className="hero-home-page-container">
+        <div className="hero-page-overlay">
+          <Header/> 
+        </div>        
+      </div>
+      
     </div>
   )
 }

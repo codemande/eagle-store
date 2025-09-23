@@ -1,0 +1,27 @@
+:root{
+  /* IMAGES */
+  --home-background-image: url(../../assets/home-page-hero.jpg);
+
+  /* COLORS */
+  --home-overlay-background-color: rgba(0, 0, 0, 0.7);
+}
+
+.hero-home-page-container{
+  background-image: var(--home-background-image);
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-page-overlay{
+  width: 100%;
+  height: 100%;
+  background-color: var(--home-overlay-background-color);
+  position: static;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
