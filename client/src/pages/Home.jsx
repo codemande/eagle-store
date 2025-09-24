@@ -1,9 +1,10 @@
-import Fixtures from "../components/Fixtures";
+import HomeFixtures from "../components/home/HomeFixtures.jsx";
 import Header from "../components/Header";
-import HomeDivider1 from "../components/HomeDivider1";
-import HomeHeroText from "../components/HomeHeroText";
-import TrendingProducts from "../components/TrendingProducts";
+import HomeDivider1 from "../components/home/HomeDivider1.jsx";
+import HomeHeroText from "../components/home/HomeHeroText.jsx";
+import HomeTrendingProducts from "../components/home/HomeTrendingProducts.jsx";
 import "./styles/Home.css";
+
 
 function Home() {
   return(
@@ -17,9 +18,9 @@ function Home() {
       </div>
 
       <div className="home-fixtures-trending">
-        <Fixtures/>
+        <HomeFixtures/>
         <hr />
-        <TrendingProducts/>
+        <HomeTrendingProducts/>
       </div>
 
       <HomeDivider1/>

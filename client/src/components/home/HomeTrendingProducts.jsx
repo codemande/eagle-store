@@ -1,9 +1,9 @@
 // import { useState } from "react";
 import { CiStar } from "react-icons/ci";
 import { GiShoppingBag } from "react-icons/gi";
-import "./styles/TrendingProduct.css";
+import "./styles/HomeTrendingProduct.css";
 
-function TrendingProducts() {
+function HomeTrendingProducts() {
  
   return(
     <div className="trendingProduct-container">
@@ -76,4 +76,4 @@ function TrendingProducts() {
   )
 }
 
-export default TrendingProducts;
+export default HomeTrendingProducts;

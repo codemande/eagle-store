@@ -1,9 +1,9 @@
 import { FaCreditCard, FaRegHeart  } from "react-icons/fa6";
 import { MdLocalShipping } from "react-icons/md";
 import { PiPackageFill } from "react-icons/pi";
-import "./styles/Fixtures.css";
+import "./styles/HomeFixtures.css";
 
-function Fixtures() {
+function HomeFixtures() {
   return(
     <div className="home-fixture-container">
       <div className="home-fixture-content">
@@ -33,4 +33,4 @@ function Fixtures() {
   )
 }
 
-export default Fixtures;
+export default HomeFixtures;
