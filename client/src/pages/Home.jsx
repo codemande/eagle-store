@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import HomeDivider1 from "../components/home/HomeDivider1.jsx";
 import HomeHeroText from "../components/home/HomeHeroText.jsx";
 import HomeTrendingProducts from "../components/home/HomeTrendingProducts.jsx";
+import HomeCategories from "../components/home/HomeCategories.jsx";
 import "./styles/Home.css";
 
 
@@ -24,7 +25,7 @@ function Home() {
       </div>
 
       <HomeDivider1/>
-      
+      <HomeCategories/>
     </div>
   )
 }
