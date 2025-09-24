@@ -5,6 +5,7 @@ import HomeHeroText from "../components/home/HomeHeroText.jsx";
 import HomeTrendingProducts from "../components/home/HomeTrendingProducts.jsx";
 import HomeCategories from "../components/home/HomeCategories.jsx";
 import HomeMotive from "../components/home/HomeMotive.jsx";
+import HomePopularProduct from "../components/home/HomePopularProduct.jsx";
 import "./styles/Home.css";
 
 
@@ -19,7 +20,7 @@ function Home() {
         </div>      
       </div>
 
-      <div className="home-fixtures-trending">
+      <div className="home-products">
         <HomeFixtures/>
         <hr />
         <HomeTrendingProducts/>
@@ -28,6 +29,10 @@ function Home() {
       <HomeDivider1/>
       <HomeCategories/>
       <HomeMotive/>
+
+      <div className="home-products">
+        <HomePopularProduct/>
+      </div>
     </div>
   )
 }

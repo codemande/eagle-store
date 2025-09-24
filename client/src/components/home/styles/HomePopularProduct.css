@@ -1,4 +1,4 @@
-.homePopularProduct-container{
+.trendingProduct-container{
   margin-top: 6rem;
   margin-bottom: 6rem;
   display: flex;
@@ -7,26 +7,26 @@
   gap: 6rem;
 }
 
-.homePopularProduct-title{
+.trendingProduct-title{
   font-size: 3rem;
   font-weight: 400;
 }
 
-.homePopularProduct-grid{
+.trendingProduct-grid{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 20px;
 }
 
-.homePopularProduct-image-container{
+.trendingProduct-image-container{
   position: relative;
 }
 
-.homePopularProduct-image{
+.trendingProduct-image{
   width: 100%;
 }
 
-.homePopularProduct-cart-container{
+.trendingProduct-cart-container{
   display: flex;
   align-items: center;
   position: absolute;
@@ -35,7 +35,7 @@
   gap: 10px;
 }
 
-.homePopularProduct-cart-tooltip{
+.trendingProduct-cart-tooltip{
   background-color: #222;
   color: #fff;
   padding: 6px 12px;
@@ -45,7 +45,7 @@
   display: none;
 }
 
-.homePopularProduct-cart-tooltip::after{
+.trendingProduct-cart-tooltip::after{
   content: "";
   position: absolute;
   top: 50%;
@@ -58,7 +58,7 @@
   border-left: 8px solid #222;
 }
 
-.homePopularProduct-image-cart{
+.trendingProduct-image-cart{
 
   font-size: 40px;
   padding: 10px;
@@ -68,54 +68,54 @@
   display: none;
 }
 
-.homePopularProduct-image-container:hover .homePopularProduct-image-cart{
+.trendingProduct-image-container:hover .trendingProduct-image-cart{
   display: block;
 }
 
-.homePopularProduct-cart-container:hover 
-.homePopularProduct-cart-tooltip{
+.trendingProduct-cart-container:hover 
+.trendingProduct-cart-tooltip{
   display: block;
 }
 
-.homePopularProduct-stars{
+.trendingProduct-stars{
   margin-left: -3px;
 }
 
-.homePopularProduct-name{
+.trendingProduct-name{
   margin-top: 5px;
 }
 
-.homePopularProduct-type{
+.trendingProduct-type{
   margin-top: 5px;
   font-size: 14px;
   color: #979292;
   font-weight: 300;
 }
 
-.homePopularProduct-price{
+.trendingProduct-price{
   margin-top: 5px;
   font-size: 15px;
 }
 
 /* === MEDIA QUERIES === */
 @media (max-width: 768px) {
-  .homePopularProduct-container{
+  .trendingProduct-container{
     margin-top: 3.5rem;
     /* gap: 6rem; */
   }
 
-  .homePopularProduct-title{
+  .trendingProduct-title{
     font-size: 2rem;
   }
 
-  .homePopularProduct-grid{
+  .trendingProduct-grid{
     grid-template-columns: 1fr 1fr ;
     column-gap: 10px;
     row-gap: 20px;
   }
 
-  .homePopularProduct-cart-container:hover 
-  .homePopularProduct-cart-tooltip{
+  .trendingProduct-cart-container:hover 
+  .trendingProduct-cart-tooltip{
     display: none;
   }
 } 
