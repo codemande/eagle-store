@@ -4,6 +4,7 @@ import HomeDivider1 from "../components/home/HomeDivider1.jsx";
 import HomeHeroText from "../components/home/HomeHeroText.jsx";
 import HomeTrendingProducts from "../components/home/HomeTrendingProducts.jsx";
 import HomeCategories from "../components/home/HomeCategories.jsx";
+import HomeMotive from "../components/home/HomeMotive.jsx";
 import "./styles/Home.css";
 
 
@@ -26,6 +27,7 @@ function Home() {
 
       <HomeDivider1/>
       <HomeCategories/>
+      <HomeMotive/>
     </div>
   )
 }
