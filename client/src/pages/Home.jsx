@@ -1,6 +1,7 @@
 import Fixtures from "../components/Fixtures";
 import Header from "../components/Header";
 import HomeHeroText from "../components/HomeHeroText";
+import TrendingProducts from "../components/TrendingProducts";
 import "./styles/Home.css";
 
 function Home() {
@@ -17,6 +18,7 @@ function Home() {
       <div className="home-fixtures-trending">
         <Fixtures/>
         <hr />
+        <TrendingProducts/>
       </div>
       
     </div>

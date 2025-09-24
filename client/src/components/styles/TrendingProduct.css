@@ -1,0 +1,121 @@
+.trendingProduct-container{
+  margin-top: 6rem;
+  margin-bottom: 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6rem;
+}
+
+.trendingProduct-title{
+  font-size: 3rem;
+  font-weight: 400;
+}
+
+.trendingProduct-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 20px;
+}
+
+.trendingProduct-image-container{
+  position: relative;
+}
+
+.trendingProduct-image{
+  width: 100%;
+}
+
+.trendingProduct-cart-container{
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  gap: 10px;
+}
+
+.trendingProduct-cart-tooltip{
+  background-color: #222;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  position: relative;
+  display: none;
+}
+
+.trendingProduct-cart-tooltip::after{
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -8px;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid #222;
+}
+
+.trendingProduct-image-cart{
+
+  font-size: 40px;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: white;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
+  display: none;
+}
+
+.trendingProduct-image-container:hover .trendingProduct-image-cart{
+  display: block;
+}
+
+.trendingProduct-cart-container:hover 
+.trendingProduct-cart-tooltip{
+  display: block;
+}
+
+.trendingProduct-stars{
+  margin-left: -3px;
+}
+
+.trendingProduct-name{
+  margin-top: 5px;
+}
+
+.trendingProduct-type{
+  margin-top: 5px;
+  font-size: 14px;
+  color: #979292;
+  font-weight: 300;
+}
+
+.trendingProduct-price{
+  margin-top: 5px;
+  font-size: 15px;
+}
+
+/* === MEDIA QUERIES === */
+@media (max-width: 768px) {
+  .trendingProduct-container{
+    margin-top: 3.5rem;
+    /* gap: 6rem; */
+  }
+
+  .trendingProduct-title{
+    font-size: 2rem;
+  }
+
+  .trendingProduct-grid{
+    grid-template-columns: 1fr 1fr ;
+    column-gap: 10px;
+    row-gap: 20px;
+  }
+
+  .trendingProduct-cart-container:hover 
+  .trendingProduct-cart-tooltip{
+    display: none;
+  }
+} 
