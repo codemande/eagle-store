@@ -1,0 +1,82 @@
+.homeDivider1-container{
+  background-image: url(../../assets/home/home-sales-photo.jpg);
+  width: 100vw;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.homeDivider1-overlay{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(47, 44, 44, 0.7);
+  position: static;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.homeDivider1-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  height: 100%;
+}
+
+.homeDivider1-content h2{
+  font-size: 2.5rem;
+  font-weight: 400;
+}
+
+.homeDivider1-content span{
+  display: block;
+  text-align: center;
+}
+
+.homeDivider1-content p,
+.homeDivider1-button{
+  margin-top: 28px;
+}
+
+.homeDivider1-button{
+  text-decoration: none;
+  color: white;
+  border: 1px solid white;
+  padding: 15px 30px;
+  border-radius: 50px;
+}
+
+.homeDivider1-button:hover{
+  background-color: white;
+  color: black;
+}
+
+/* === MEDIA QUERIES === */
+@media (max-width: 768px) {
+  .homeDivider1-container{
+    height: 350px;
+  }
+
+  .homeDivider1-content{
+    margin: auto 25px;
+  }
+
+  .homeDivider1-content h2{
+    font-size: 2.1rem;
+    font-weight: 400;
+    text-align: center;
+  }
+
+  .homeDivider1-content span{
+    display: inline;
+  }
+
+  .homeDivider1-content p{
+    text-align: center;
+  }
+  
+} 

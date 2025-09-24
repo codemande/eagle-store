@@ -1,6 +1,6 @@
 :root{
   /* IMAGES */
-  --home-background-image: url(../../assets/home-page-hero.jpg);
+  --home-background-image: url(../../assets/home/home-page-hero.jpg);
 
   /* COLORS */
   --home-overlay-background-color: rgba(0, 0, 0, 0.7);
