@@ -8,8 +8,8 @@ import HomeMotive from "../components/home/HomeMotive.jsx";
 import HomePopularProduct from "../components/home/HomePopularProduct.jsx";
 import HomeTestimonies from "../components/home/HomeTestimonies.jsx";
 import HomeDivider2 from "../components/home/HomeDivider2.jsx";
+import Footer from "../components/Footer.jsx";
 import "./styles/Home.css";
-
 
 function Home() {
   return(
@@ -37,6 +37,8 @@ function Home() {
       </div>
       <HomeTestimonies/>
       <HomeDivider2/>
+
+      <Footer/>
     </div>
   )
 }

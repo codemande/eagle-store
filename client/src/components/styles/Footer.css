@@ -1,0 +1,97 @@
+.footer-container{
+  background-color: #ecf4d3;
+}
+
+.footer-content{
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  font-weight: 250;
+}
+
+.footer-content-top{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 3rem 0 .5rem;
+}
+
+.footer-logo-container{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  width: 300px;
+}
+
+.footer-logo{
+  height: 70px;  
+}
+
+.footer-brand-name{
+  font-size: 1.5rem;
+  color: rgb(8, 77, 8);
+  font-family: "Londrina Shadow", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.footer-pages-links{
+  display: flex;
+  list-style: none;
+}
+
+.footer-pages-links a{
+  text-decoration: none;
+  margin: 10px;
+  color: black;
+  width: 300px;
+}
+
+.footer-socials-container{
+  display: flex;
+  list-style: none;
+  font-size: 20px;
+  justify-content: space-evenly;
+  width: 300px;
+}
+
+.footer-socials-container a{
+  color: black;
+  margin: 10px;
+}
+
+.footer-copyright{
+  width: 400px;
+  text-align: center;
+  margin: 27px auto;
+}
+
+/* === MEDIA QUERIES === */
+@media (max-width: 768px) {
+  .footer-content{
+    width: 90vw;
+  }
+
+  .footer-content-top{
+    flex-direction: column;
+  }
+
+  .footer-logo-container{
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  .footer-logo{
+    height: 60px;  
+  }
+
+  .footer-pages-links{
+    justify-content: center;
+    margin-bottom: 15px;
+  }
+
+  .footer-socials-container{
+    justify-content: center;
+  }
+}
