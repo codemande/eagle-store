@@ -92,7 +92,6 @@
 
   .homeTestimonies-content{
     width: 90%;
-    margin: 30px auto;
     grid-template-columns: 1fr;
     row-gap: 15px;
   }
@@ -116,11 +115,9 @@
 
   .homeTestimonies-card{
     padding: 30px;
-
   }
 
   .homeTestimonies-quote{
-    font-size: 20px;
     margin-bottom: 20px;
   }
 
@@ -146,18 +143,7 @@
     grid-row: 7;
   }
 
-  .homeTestimonies-img{
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: center;
-    vertical-align: middle;
-  }
-
   .homeTestimonies-name{
-    /* display: inline; */
-    vertical-align: middle;
     font-weight: 200;
   }
 }
