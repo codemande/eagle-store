@@ -12,7 +12,7 @@ function HomePopularProduct() {
 
         <div>
           <div className="homePopularProduct-image-container">
-            <img className="homePopularProduct-image" src="../../src/assets/products/product-05.jpg" alt="product image" />
+            <img className="homePopularProduct-image" src="../../assets/products/product-05.jpg" alt="product image" />
 
             <div className="homePopularProduct-cart-container">
               <div className="homePopularProduct-cart-tooltip">
@@ -32,7 +32,7 @@ function HomePopularProduct() {
 
         <div>
           <div className="homePopularProduct-image-container">
-            <img className="homePopularProduct-image" src="../../src/assets/products/product-04.jpg" alt="product image" />
+            <img className="homePopularProduct-image" src="../../assets/products/product-04.jpg" alt="product image" />
 
             <div className="homePopularProduct-cart-container">
               <div className="homePopularProduct-cart-tooltip">
@@ -52,7 +52,7 @@ function HomePopularProduct() {
 
         <div>
           <div className="homePopularProduct-image-container">
-            <img className="homePopularProduct-image" src="../../src/assets/products/product-06.jpg" alt="product image" />
+            <img className="homePopularProduct-image" src="../../assets/products/product-06.jpg" alt="product image" />
 
             <div className="homePopularProduct-cart-container">
               <div className="homePopularProduct-cart-tooltip">

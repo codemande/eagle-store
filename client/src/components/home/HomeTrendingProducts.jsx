@@ -15,7 +15,7 @@ function HomeTrendingProducts() {
         <div>
           <div className="trendingProduct-image-container">
 
-            <img className="trendingProduct-image" src="../src/assets/products/product-01.jpg" alt="product image" />
+            <img className="trendingProduct-image" src="../assets/products/product-01.jpg" alt="product image" />
 
             <div className="trendingProduct-cart-container">
               <div className="trendingProduct-cart-tooltip">
@@ -35,7 +35,7 @@ function HomeTrendingProducts() {
 
         <div>
           <div className="trendingProduct-image-container">
-            <img className="trendingProduct-image" src="../src/assets/products/product-02.jpg" alt="product image" />
+            <img className="trendingProduct-image" src="../assets/products/product-02.jpg" alt="product image" />
 
             <div className="trendingProduct-cart-container">
               <div className="trendingProduct-cart-tooltip">
@@ -55,7 +55,7 @@ function HomeTrendingProducts() {
         <div>
 
           <div className="trendingProduct-image-container">
-            <img className="trendingProduct-image" src="../src/assets/products/product-03.jpg" alt="product image" />
+            <img className="trendingProduct-image" src="../assets/products/product-03.jpg" alt="product image" />
             <div className="trendingProduct-cart-container">
               <div className="trendingProduct-cart-tooltip">
                 Add to cart

@@ -5,7 +5,7 @@ function HomeMotive() {
     <div className="homeMotive-container">
 
       <div className="homeMotive-column-image">
-        <img src="../../src/assets/home/home-motive.jpg" alt="home motive" className="homeMotive-image" />
+        <img src="../../assets/home/home-motive.jpg" alt="home motive" className="homeMotive-image" />
       </div>
 
       <div className="homeMotive-column-text">

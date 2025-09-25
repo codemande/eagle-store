@@ -4,7 +4,7 @@ import "./styles/HomeDivider1.css";
 function HomeDivider2() {
   return(
     <div className="homeDivider1-container" style={{
-      backgroundImage: "url(../../src/assets/home/home-divider2.webp)"
+      backgroundImage: "url(../../assets/home/home-divider2.webp)"
     }}>
       <div className="homeDivider1-overlay">
         <div className="homeDivider1-content">
