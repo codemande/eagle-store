@@ -1,4 +1,7 @@
 import { FaQuoteLeft } from "react-icons/fa";
+import testimony1 from '../../assets/home/testimony1.webp';
+import testimony2 from '../../assets/home/testimony2.jpg';
+import testimony3 from '../../assets/home/testimony3.jpg';
 import "./styles/HomeTestimonies.css";
 
 function HomeTestimonies() {
@@ -20,7 +23,7 @@ function HomeTestimonies() {
             I am absolutely thrilled with the service I received from their company! They were attentive, responsive, and genuinely cared about meeting my needs. I highly recommend them.
           </p>
           <div>
-            <img src="../../assets/home/testimony1.webp" alt="testimony" className="homeTestimonies-img" />
+            <img src={testimony1} alt="testimony" className="homeTestimonies-img" />
             <p className="homeTestimonies-name">Jane Doe</p>
           </div>
         </div>
@@ -31,7 +34,7 @@ function HomeTestimonies() {
             I couldn’t be happier with the support I got from this team! They were professional, efficient, and always friendly. Their dedication impressed me deeply, and I highly recommend their excellent service.
           </p>
           <div>
-            <img src="../../assets/home/testimony2.jpg" alt="testimony" className="homeTestimonies-img" />
+            <img src={testimony2} alt="testimony" className="homeTestimonies-img" />
             <p className="homeTestimonies-name">John Doe</p>
           </div>
         </div>
@@ -42,7 +45,7 @@ function HomeTestimonies() {
             The experience exceeded every expectation I had from the beginning! Their staff was incredibly helpful, patient, and knowledgeable. 
           </p>
           <div>
-            <img src="../../assets/home/testimony3.jpg" alt="testimony" className="homeTestimonies-img" />
+            <img src={testimony3} alt="testimony" className="homeTestimonies-img" />
             <p className="homeTestimonies-name">Johnny Doe</p>
           </div>
         </div>

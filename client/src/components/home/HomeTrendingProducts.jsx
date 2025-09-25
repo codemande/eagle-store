@@ -1,6 +1,8 @@
-// import { useState } from "react";
 import { CiStar } from "react-icons/ci";
 import { GiShoppingBag } from "react-icons/gi";
+import product01 from '../../assets/products/product-01.jpg';
+import product02 from '../../assets/products/product-02.jpg';
+import product03 from '../../assets/products/product-03.jpg';
 import "./styles/HomeTrendingProduct.css";
 
 function HomeTrendingProducts() {
@@ -15,7 +17,7 @@ function HomeTrendingProducts() {
         <div>
           <div className="trendingProduct-image-container">
 
-            <img className="trendingProduct-image" src="../assets/products/product-01.jpg" alt="product image" />
+            <img className="trendingProduct-image" src={product01} alt="product image" />
 
             <div className="trendingProduct-cart-container">
               <div className="trendingProduct-cart-tooltip">
@@ -35,7 +37,7 @@ function HomeTrendingProducts() {
 
         <div>
           <div className="trendingProduct-image-container">
-            <img className="trendingProduct-image" src="../assets/products/product-02.jpg" alt="product image" />
+            <img className="trendingProduct-image" src={product02} alt="product image" />
 
             <div className="trendingProduct-cart-container">
               <div className="trendingProduct-cart-tooltip">
@@ -55,7 +57,7 @@ function HomeTrendingProducts() {
         <div>
 
           <div className="trendingProduct-image-container">
-            <img className="trendingProduct-image" src="../assets/products/product-03.jpg" alt="product image" />
+            <img className="trendingProduct-image" src={product03} alt="product image" />
             <div className="trendingProduct-cart-container">
               <div className="trendingProduct-cart-tooltip">
                 Add to cart

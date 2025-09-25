@@ -1,5 +1,8 @@
 import { CiStar } from "react-icons/ci";
 import { GiShoppingBag } from "react-icons/gi";
+import product05 from '../../assets/products/product-05.jpg';
+import product04 from '../../assets/products/product-04.jpg';
+import product06 from '../../assets/products/product-06.jpg';
 import "./styles/HomePopularProduct.css";
 
 function HomePopularProduct() {
@@ -12,7 +15,7 @@ function HomePopularProduct() {
 
         <div>
           <div className="homePopularProduct-image-container">
-            <img className="homePopularProduct-image" src="../../assets/products/product-05.jpg" alt="product image" />
+            <img className="homePopularProduct-image" src={product05} alt="product image" />
 
             <div className="homePopularProduct-cart-container">
               <div className="homePopularProduct-cart-tooltip">
@@ -32,7 +35,7 @@ function HomePopularProduct() {
 
         <div>
           <div className="homePopularProduct-image-container">
-            <img className="homePopularProduct-image" src="../../assets/products/product-04.jpg" alt="product image" />
+            <img className="homePopularProduct-image" src={product04} alt="product image" />
 
             <div className="homePopularProduct-cart-container">
               <div className="homePopularProduct-cart-tooltip">
@@ -52,7 +55,7 @@ function HomePopularProduct() {
 
         <div>
           <div className="homePopularProduct-image-container">
-            <img className="homePopularProduct-image" src="../../assets/products/product-06.jpg" alt="product image" />
+            <img className="homePopularProduct-image" src={product06} alt="product image" />
 
             <div className="homePopularProduct-cart-container">
               <div className="homePopularProduct-cart-tooltip">

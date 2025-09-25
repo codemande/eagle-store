@@ -1,3 +1,4 @@
+import homeMotive from '../../assets/home/home-motive.jpg';
 import "./styles/HomeMotive.css";
 
 function HomeMotive() {
@@ -5,7 +6,7 @@ function HomeMotive() {
     <div className="homeMotive-container">
 
       <div className="homeMotive-column-image">
-        <img src="../../assets/home/home-motive.jpg" alt="home motive" className="homeMotive-image" />
+        <img src={homeMotive} alt="home motive" className="homeMotive-image" />
       </div>
 
       <div className="homeMotive-column-text">
