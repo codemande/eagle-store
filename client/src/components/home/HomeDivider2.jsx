@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
-import divider from '../../assets/home/home-divider2.webp'
 import "./styles/HomeDivider1.css";
 
 function HomeDivider2() {
   return(
     <div className="homeDivider1-container" style={{
-      backgroundImage: `url(${divider})`
+      backgroundImage: "url('/images/home/home-divider2.webp')"
     }}>
       <div className="homeDivider1-overlay">
         <div className="homeDivider1-content">
