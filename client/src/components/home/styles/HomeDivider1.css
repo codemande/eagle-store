@@ -32,6 +32,10 @@
   font-weight: 400;
 }
 
+.homeDivider1-content p{
+  line-height: 1.5;
+}
+
 .homeDivider1-content span{
   display: block;
   text-align: center;
@@ -50,9 +54,20 @@
   border-radius: 50px;
 }
 
+.homeDivider2-button{
+  background-color: rgba(74, 137, 28, 0.99);
+  color: white;
+  border: none;
+}
+
 .homeDivider1-button:hover{
   background-color: white;
   color: black;
+}
+
+.homeDivider2-button:hover{
+  background-color: hsla(95, 66%, 27%, 0.99);
+  color: white;
 }
 
 /* === MEDIA QUERIES === */
