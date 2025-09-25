@@ -24,9 +24,9 @@ function HomePopularProduct() {
 
           <div>
             <CiStar /><CiStar className="homePopularProduct-stars" /><CiStar className="homePopularProduct-stars" /><CiStar className="homePopularProduct-stars" /><CiStar className="homePopularProduct-stars" />
-            <p className="homePopularProduct-name">Zen Bamboo Grove</p>
+            <p className="homePopularProduct-name">Desert Bloom</p>
             <p className="homePopularProduct-type">Indoor Plants</p>
-            <p className="homePopularProduct-price">$90.00</p>
+            <p className="homePopularProduct-price">$70.00</p>
           </div>
         </div>
 
@@ -44,9 +44,9 @@ function HomePopularProduct() {
 
           <div>
             <CiStar /><CiStar className="homePopularProduct-stars" /><CiStar className="homePopularProduct-stars" /><CiStar className="homePopularProduct-stars" /><CiStar className="homePopularProduct-stars" />
-            <p className="homePopularProduct-name">Zen Bamboo Grove</p>
+            <p className="homePopularProduct-name">Golden Glow</p>
             <p className="homePopularProduct-type">Indoor Plants</p>
-            <p className="homePopularProduct-price">$90.00</p>
+            <p className="homePopularProduct-price">$85.00</p>
           </div>
         </div>
 
@@ -64,9 +64,9 @@ function HomePopularProduct() {
 
           <div>
             <CiStar /><CiStar className="homePopularProduct-stars" /><CiStar className="homePopularProduct-stars" /><CiStar className="homePopularProduct-stars" /><CiStar className="homePopularProduct-stars" />
-            <p className="homePopularProduct-name">Zen Bamboo Grove</p>
+            <p className="homePopularProduct-name">Silver Mist</p>
             <p className="homePopularProduct-type">Indoor Plants</p>
-            <p className="homePopularProduct-price">$90.00</p>
+            <p className="homePopularProduct-price">$92.00</p>
           </div>
         </div>
 

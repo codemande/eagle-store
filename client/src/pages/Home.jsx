@@ -6,6 +6,7 @@ import HomeTrendingProducts from "../components/home/HomeTrendingProducts.jsx";
 import HomeCategories from "../components/home/HomeCategories.jsx";
 import HomeMotive from "../components/home/HomeMotive.jsx";
 import HomePopularProduct from "../components/home/HomePopularProduct.jsx";
+import HomeTestimonies from "../components/home/HomeTestimonies.jsx";
 import "./styles/Home.css";
 
 
@@ -33,6 +34,7 @@ function Home() {
       <div className="home-products">
         <HomePopularProduct/>
       </div>
+      <HomeTestimonies/>
     </div>
   )
 }
