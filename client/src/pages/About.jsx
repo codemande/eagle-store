@@ -1,7 +1,9 @@
 import AboutMessage from "../components/about/AboutMessage";
 import AboutMission from "../components/about/AboutMission";
 import AboutValues from "../components/about/AboutValues";
+import Footer from "../components/Footer";
 import Header from "../components/Header";
+import HomeDivider2 from "../components/home/HomeDivider2";
 
 import "./styles/Shop.css";
 
@@ -22,6 +24,8 @@ function About() {
       <AboutMessage/>
       <AboutValues/>
       <AboutMission/>
+      <HomeDivider2/>
+      <Footer/>
     </div>
   )
 }
