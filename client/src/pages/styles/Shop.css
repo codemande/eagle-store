@@ -1,0 +1,61 @@
+.shop-container{
+  width: 100vw;
+}
+
+.shop-header{
+  background-image: url(/images/shop/shop-title.jpeg);
+  height: 45vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.shop-header-overlay{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(47, 44, 44, 0.7);
+  position: static;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.shop-title-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 74%;
+  color: white;
+  font-size: 2.5rem;
+}
+
+.shop-title-container h1{
+  font-size: 1.1rem;
+  font-weight: 100;
+  letter-spacing: 1.5px;
+  margin-bottom: 20px;
+}
+
+.shop-title-container p{
+  font-size: 3.2rem;
+  font-weight: 600;
+}
+
+/* === MEDIA QUERIES === */
+@media (max-width: 768px) {
+  .shop-title-container{
+    font-size: 2rem;
+  }
+
+  .shop-title-container h1{
+    font-size: 1.6rem;
+  }
+
+  .shop-title-container p{
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 500;
+  }
+}
