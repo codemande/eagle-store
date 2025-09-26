@@ -1,72 +1,72 @@
 import { CiStar } from "react-icons/ci";
 import { GiShoppingBag } from "react-icons/gi";
-import "./styles/HomePopularProduct.css";
+import "./styles/DisplayProduct.css";
 
 function HomePopularProduct() {
   return(
-    <div className="homePopularProduct-container">
+    <div className="displayProduct-container">
 
-      <h2 className="homePopularProduct-title">Popular Products</h2>
+      <h2 className="displayProduct-title">Popular Products</h2>
 
-      <div className="homePopularProduct-grid">
+      <div className="displayProduct-grid">
 
         <div>
-          <div className="homePopularProduct-image-container">
-            <img className="homePopularProduct-image" src="/images/products/product-05.jpg" alt="product image" />
+          <div className="displayProduct-image-container">
+            <img className="displayProduct-image" src="/images/products/product-05.jpg" alt="product image" />
 
-            <div className="homePopularProduct-cart-container">
-              <div className="homePopularProduct-cart-tooltip">
+            <div className="displayProduct-cart-container">
+              <div className="displayProduct-cart-tooltip">
                 Add to cart
               </div>
-              <GiShoppingBag className="homePopularProduct-image-cart" />
+              <GiShoppingBag className="displayProduct-image-cart" />
             </div>
           </div>
 
           <div>
-            <CiStar /><CiStar className="homePopularProduct-stars" /><CiStar className="homePopularProduct-stars" /><CiStar className="homePopularProduct-stars" /><CiStar className="homePopularProduct-stars" />
-            <p className="homePopularProduct-name">Desert Bloom</p>
-            <p className="homePopularProduct-type">Indoor Plants</p>
-            <p className="homePopularProduct-price">$70.00</p>
+            <CiStar /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" />
+            <p className="displayProduct-name">Desert Bloom</p>
+            <p className="displayProduct-type">Indoor Plants</p>
+            <p className="displayProduct-price">$70.00</p>
           </div>
         </div>
 
         <div>
-          <div className="homePopularProduct-image-container">
-            <img className="homePopularProduct-image" src="/images/products/product-04.jpg" alt="product image" />
+          <div className="displayProduct-image-container">
+            <img className="displayProduct-image" src="/images/products/product-04.jpg" alt="product image" />
 
-            <div className="homePopularProduct-cart-container">
-              <div className="homePopularProduct-cart-tooltip">
+            <div className="displayProduct-cart-container">
+              <div className="displayProduct-cart-tooltip">
                 Add to cart
               </div>
-              <GiShoppingBag className="homePopularProduct-image-cart" />
+              <GiShoppingBag className="displayProduct-image-cart" />
             </div>
           </div>
 
           <div>
-            <CiStar /><CiStar className="homePopularProduct-stars" /><CiStar className="homePopularProduct-stars" /><CiStar className="homePopularProduct-stars" /><CiStar className="homePopularProduct-stars" />
-            <p className="homePopularProduct-name">Golden Glow</p>
-            <p className="homePopularProduct-type">Indoor Plants</p>
-            <p className="homePopularProduct-price">$85.00</p>
+            <CiStar /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" />
+            <p className="displayProduct-name">Golden Glow</p>
+            <p className="displayProduct-type">Indoor Plants</p>
+            <p className="displayProduct-price">$85.00</p>
           </div>
         </div>
 
         <div>
-          <div className="homePopularProduct-image-container">
-            <img className="homePopularProduct-image" src="/images/products/product-06.jpg" alt="product image" />
+          <div className="displayProduct-image-container">
+            <img className="displayProduct-image" src="/images/products/product-06.jpg" alt="product image" />
 
-            <div className="homePopularProduct-cart-container">
-              <div className="homePopularProduct-cart-tooltip">
+            <div className="displayProduct-cart-container">
+              <div className="displayProduct-cart-tooltip">
                 Add to cart
               </div>
-              <GiShoppingBag className="homePopularProduct-image-cart" />
+              <GiShoppingBag className="displayProduct-image-cart" />
             </div>
           </div>
 
           <div>
-            <CiStar /><CiStar className="homePopularProduct-stars" /><CiStar className="homePopularProduct-stars" /><CiStar className="homePopularProduct-stars" /><CiStar className="homePopularProduct-stars" />
-            <p className="homePopularProduct-name">Silver Mist</p>
-            <p className="homePopularProduct-type">Indoor Plants</p>
-            <p className="homePopularProduct-price">$92.00</p>
+            <CiStar /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" />
+            <p className="displayProduct-name">Silver Mist</p>
+            <p className="displayProduct-type">Indoor Plants</p>
+            <p className="displayProduct-price">$92.00</p>
           </div>
         </div>
 

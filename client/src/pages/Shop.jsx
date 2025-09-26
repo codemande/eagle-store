@@ -1,4 +1,5 @@
 import Header from "../components/Header";
+import ShopProduct from "../components/home/ShopProduct";
 
 import "./styles/Shop.css";
 
@@ -14,6 +15,7 @@ function Shop() {
           </div>
         </div>
       </header>
+      <ShopProduct/>
     </div>
   )
 }

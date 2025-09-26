@@ -1,4 +1,4 @@
-.trendingProduct-container{
+.displayProduct-container{
   margin-top: 6rem;
   margin-bottom: 6rem;
   display: flex;
@@ -7,26 +7,32 @@
   gap: 6rem;
 }
 
-.trendingProduct-title{
+.displayProduct-title{
   font-size: 3rem;
   font-weight: 400;
 }
 
-.trendingProduct-grid{
+.displayProduct-grid{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 20px;
+  row-gap: 50px;
 }
 
-.trendingProduct-image-container{
+.displayProduct-item{
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+.displayProduct-image-container{
   position: relative;
 }
 
-.trendingProduct-image{
+.displayProduct-image{
   width: 100%;
 }
 
-.trendingProduct-cart-container{
+.displayProduct-cart-container{
   display: flex;
   align-items: center;
   position: absolute;
@@ -35,7 +41,7 @@
   gap: 10px;
 }
 
-.trendingProduct-cart-tooltip{
+.displayProduct-cart-tooltip{
   background-color: #222;
   color: #fff;
   padding: 6px 12px;
@@ -45,7 +51,7 @@
   display: none;
 }
 
-.trendingProduct-cart-tooltip::after{
+.displayProduct-cart-tooltip::after{
   content: "";
   position: absolute;
   top: 50%;
@@ -58,7 +64,7 @@
   border-left: 8px solid #222;
 }
 
-.trendingProduct-image-cart{
+.displayProduct-image-cart{
 
   font-size: 40px;
   padding: 10px;
@@ -68,54 +74,58 @@
   display: none;
 }
 
-.trendingProduct-image-container:hover .trendingProduct-image-cart{
+.displayProduct-image-container:hover 
+.displayProduct-image-cart{
   display: block;
 }
 
-.trendingProduct-cart-container:hover 
-.trendingProduct-cart-tooltip{
+.displayProduct-cart-container:hover 
+.displayProduct-cart-tooltip{
   display: block;
 }
 
-.trendingProduct-stars{
+.displayProduct-description{
+  margin: 8px;
+}
+
+.displayProduct-stars{
   margin-left: -3px;
 }
 
-.trendingProduct-name{
+.displayProduct-name{
   margin-top: 5px;
 }
 
-.trendingProduct-type{
+.displayProduct-type{
   margin-top: 5px;
   font-size: 14px;
   color: #979292;
   font-weight: 300;
 }
 
-.trendingProduct-price{
+.displayProduct-price{
   margin-top: 5px;
   font-size: 15px;
 }
 
 /* === MEDIA QUERIES === */
 @media (max-width: 768px) {
-  .trendingProduct-container{
+  .displayProduct-container{
     margin-top: 3.5rem;
-    /* gap: 6rem; */
   }
 
-  .trendingProduct-title{
+  .displayProduct-title{
     font-size: 2rem;
   }
 
-  .trendingProduct-grid{
+  .displayProduct-grid{
     grid-template-columns: 1fr 1fr ;
     column-gap: 10px;
     row-gap: 20px;
   }
 
-  .trendingProduct-cart-container:hover 
-  .trendingProduct-cart-tooltip{
+  .displayProduct-cart-container:hover 
+  .displayProduct-cart-tooltip{
     display: none;
   }
 } 

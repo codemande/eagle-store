@@ -1,73 +1,73 @@
 import { CiStar } from "react-icons/ci";
 import { GiShoppingBag } from "react-icons/gi";
-import "./styles/HomeTrendingProduct.css";
+import "./styles/DisplayProduct.css";
 
 function HomeTrendingProducts() {
  
   return(
-    <div className="trendingProduct-container">
+    <div className="displayProduct-container">
 
-      <h2 className="trendingProduct-title">Trending Products</h2>
+      <h2 className="displayProduct-title">Trending Products</h2>
 
-      <div className="trendingProduct-grid">
+      <div className="displayProduct-grid">
 
         <div>
-          <div className="trendingProduct-image-container">
+          <div className="displayProduct-image-container">
 
-            <img className="trendingProduct-image" src="/images/products/product-01.jpg" alt="product image" />
+            <img className="displayProduct-image" src="/images/products/product-01.jpg" alt="product image" />
 
-            <div className="trendingProduct-cart-container">
-              <div className="trendingProduct-cart-tooltip">
+            <div className="displayProduct-cart-container">
+              <div className="displayProduct-cart-tooltip">
                 Add to cart
               </div>
-              <GiShoppingBag className="trendingProduct-image-cart" />
+              <GiShoppingBag className="displayProduct-image-cart" />
             </div>
           </div>
 
           <div>
-            <CiStar /><CiStar className="trendingProduct-stars" /><CiStar className="trendingProduct-stars" /><CiStar className="trendingProduct-stars" /><CiStar className="trendingProduct-stars" />
-            <p className="trendingProduct-name">Zen Bamboo Grove</p>
-            <p className="trendingProduct-type">Indoor Plants</p>
-            <p className="trendingProduct-price">$90.00</p>
+            <CiStar /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" />
+            <p className="displayProduct-name">Zen Bamboo Grove</p>
+            <p className="displayProduct-type">Indoor Plants</p>
+            <p className="displayProduct-price">$90.00</p>
           </div>
         </div>
 
         <div>
-          <div className="trendingProduct-image-container">
-            <img className="trendingProduct-image" src="/images/products/product-02.jpg" alt="product image" />
+          <div className="displayProduct-image-container">
+            <img className="displayProduct-image" src="/images/products/product-02.jpg" alt="product image" />
 
-            <div className="trendingProduct-cart-container">
-              <div className="trendingProduct-cart-tooltip">
+            <div className="displayProduct-cart-container">
+              <div className="displayProduct-cart-tooltip">
                 Add to cart
               </div>
-              <GiShoppingBag className="trendingProduct-image-cart" />
+              <GiShoppingBag className="displayProduct-image-cart" />
             </div>
           </div>
           <div>
-            <CiStar /><CiStar className="trendingProduct-stars" /><CiStar className="trendingProduct-stars" /><CiStar  className="trendingProduct-stars"/><CiStar className="trendingProduct-stars" />
-            <p className="trendingProduct-name">Starlight Succulent</p>
-            <p className="trendingProduct-type">Indoor Plants</p>
-            <p className="trendingProduct-price">$95.00</p>
+            <CiStar /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar  className="displayProduct-stars"/><CiStar className="displayProduct-stars" />
+            <p className="displayProduct-name">Starlight Succulent</p>
+            <p className="displayProduct-type">Indoor Plants</p>
+            <p className="displayProduct-price">$95.00</p>
           </div>
         </div>
 
         <div>
 
-          <div className="trendingProduct-image-container">
-            <img className="trendingProduct-image" src="/images/products/product-03.jpg" alt="product image" />
-            <div className="trendingProduct-cart-container">
-              <div className="trendingProduct-cart-tooltip">
+          <div className="displayProduct-image-container">
+            <img className="displayProduct-image" src="/images/products/product-03.jpg" alt="product image" />
+            <div className="displayProduct-cart-container">
+              <div className="displayProduct-cart-tooltip">
                 Add to cart
               </div>
-              <GiShoppingBag className="trendingProduct-image-cart" />
+              <GiShoppingBag className="displayProduct-image-cart" />
             </div>
           </div>
 
           <div>
-            <CiStar /><CiStar className="trendingProduct-stars" /><CiStar className="trendingProduct-stars" /><CiStar className="trendingProduct-stars" /><CiStar className="trendingProduct-stars" />
-            <p className="trendingProduct-name">Silver Mist</p>
-            <p className="trendingProduct-type">Indoor Plants</p>
-            <p className="trendingProduct-price">$92.00</p>
+            <CiStar /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" />
+            <p className="displayProduct-name">Silver Mist</p>
+            <p className="displayProduct-type">Indoor Plants</p>
+            <p className="displayProduct-price">$92.00</p>
           </div>
         </div>
       </div>
