@@ -1,0 +1,86 @@
+.aboutMission-container{
+  width: 90vw;
+  margin: 6rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.aboutMission-content{
+  width: 41%;
+}
+
+.aboutMission-title{
+  font-size: 44px;
+  margin-bottom: 30px;
+}
+
+.aboutMission-message{
+  font-weight: 300;
+  line-height: 1.5;
+  margin-bottom: 60px;
+}
+
+.aboutMission-image-container{
+  width: 41%;
+}
+
+.aboutMission-images{
+  width: 100%;
+}
+
+.aboutMission-points-wrap{
+  display: flex;
+}
+
+.aboutMission-points-column{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-right: 70px;
+}
+
+.aboutMission-point-content{
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.aboutMission-point{
+  color: rgba(74, 137, 28, 0.99);
+}
+
+.aboutMission-point-message{
+  font-weight: 300;
+}
+
+/* === MEDIA QUERIES === */
+@media (max-width: 768px) {
+  .aboutMission-container{
+    width: 84vw;
+    margin: 2rem auto;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .aboutMission-content{
+    width: 100%;
+  }
+
+  .aboutMission-message{
+    margin-bottom: 35px;
+  }
+
+  .aboutMission-image-container{
+    width: 100%;
+    margin-top: 40px;
+  }
+
+  .aboutMission-points-wrap{
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .aboutMission-points-column{
+    gap: 10px;
+  }

@@ -1,4 +1,5 @@
 import AboutMessage from "../components/about/AboutMessage";
+import AboutMission from "../components/about/AboutMission";
 import AboutValues from "../components/about/AboutValues";
 import Header from "../components/Header";
 
@@ -20,6 +21,7 @@ function About() {
 
       <AboutMessage/>
       <AboutValues/>
+      <AboutMission/>
     </div>
   )
 }
