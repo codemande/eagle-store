@@ -21,8 +21,8 @@ function Header() {
         <div className="header-desktop-links desktop-only">
 
           <ul className="desktop-pages-links links">
-            <li><Link>Home</Link></li>
-            <li><Link>Shop</Link></li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/shop">Shop</Link></li>
             <li><Link>About</Link></li>
             <li><Link>Contact</Link></li>
           </ul>
