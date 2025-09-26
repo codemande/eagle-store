@@ -1,4 +1,5 @@
 import AboutMessage from "../components/about/AboutMessage";
+import AboutValues from "../components/about/AboutValues";
 import Header from "../components/Header";
 
 import "./styles/Shop.css";
@@ -18,6 +19,7 @@ function About() {
       </header>
 
       <AboutMessage/>
+      <AboutValues/>
     </div>
   )
 }

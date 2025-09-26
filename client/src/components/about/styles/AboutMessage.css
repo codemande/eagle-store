@@ -67,7 +67,6 @@
 /* === MEDIA QUERIES === */
 @media (max-width: 768px) {
   .aboutMessage-container{
-    width: 90vw;
     margin: 4rem auto;
   }
 
