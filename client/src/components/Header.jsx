@@ -64,7 +64,7 @@ function Header() {
             <Link onClick={() => setMenuOpen(false)}>
               Home
             </Link>
-            <Link onClick={() => setMenuOpen(false)}>
+            <Link to="/shop" onClick={() => setMenuOpen(false)}>
               Shop
             </Link>
             <Link onClick={() => setMenuOpen(false)}>

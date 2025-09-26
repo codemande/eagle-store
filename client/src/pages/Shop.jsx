@@ -1,4 +1,6 @@
+import Footer from "../components/Footer";
 import Header from "../components/Header";
+import HomeDivider2 from "../components/home/HomeDivider2";
 import ShopProduct from "../components/home/ShopProduct";
 
 import "./styles/Shop.css";
@@ -15,7 +17,12 @@ function Shop() {
           </div>
         </div>
       </header>
-      <ShopProduct/>
+      <div>
+        <ShopProduct/>
+      </div>
+      
+      <HomeDivider2/>
+      <Footer/>
     </div>
   )
 }
