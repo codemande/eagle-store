@@ -23,7 +23,7 @@ function Header() {
           <ul className="desktop-pages-links links">
             <li><Link to="/">Home</Link></li>
             <li><Link to="/shop">Shop</Link></li>
-            <li><Link>About</Link></li>
+            <li><Link to="/about">About</Link></li>
             <li><Link>Contact</Link></li>
           </ul>
           
@@ -67,7 +67,7 @@ function Header() {
             <Link to="/shop" onClick={() => setMenuOpen(false)}>
               Shop
             </Link>
-            <Link onClick={() => setMenuOpen(false)}>
+            <Link to="/about" onClick={() => setMenuOpen(false)}>
               About
             </Link>
             <Link onClick={() => setMenuOpen(false)}>
