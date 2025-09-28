@@ -10,7 +10,7 @@ function HomeDivider1() {
           <p>
             Don’t miss out on our flash sale event! For a limited time, enjoy up to 50% <span> off on a selection of our best-selling products.</span>
           </p>
-          <Link className="homeDivider1-button"> Shop Now</Link>
+          <Link to="/shop" className="homeDivider1-button"> Shop Now</Link>
         </div>
       </div>
     </div>

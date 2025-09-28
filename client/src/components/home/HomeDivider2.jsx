@@ -12,7 +12,7 @@ function HomeDivider2() {
           <p>
             Browse our online store or visit us in person to <span> experience the beauty of nature.</span>
           </p>
-          <Link className="homeDivider1-button homeDivider2-button"> Shop Now</Link>
+          <Link to="/shop" className="homeDivider1-button homeDivider2-button"> Shop Now</Link>
         </div>
       </div>
     </div>

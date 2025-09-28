@@ -10,7 +10,7 @@ function HomeHeroText() {
           <span className="homeHeroTitle-mobile">Discover the</span> Beauty of 
           <span className="homeHeroTitle-desktop"> Nature at Your Fingertips</span>
         </p>
-        <Link>Shop Now</Link>  
+        <Link to="/shop">Shop Now</Link>  
       </div>      
     </div>
   )

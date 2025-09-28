@@ -13,7 +13,7 @@ function Header() {
     <header>
       <div className="header-desktop-container container">
 
-        <Link className="header-logo-container container">
+        <Link to="/" className="header-logo-container container">
           <img className='logo' src="/plant-logo.png" alt="eagle store logo" />
           <h1> EAGLE STORE </h1>
         </Link>
@@ -61,7 +61,7 @@ function Header() {
       {/* Mobile Nav Panel */}
         {menuOpen && (
           <div className="mobile-nav">
-            <Link onClick={() => setMenuOpen(false)}>
+            <Link to="/" onClick={() => setMenuOpen(false)}>
               Home
             </Link>
             <Link to="/shop" onClick={() => setMenuOpen(false)}>

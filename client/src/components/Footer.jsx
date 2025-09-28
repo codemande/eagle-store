@@ -11,16 +11,16 @@ function Footer() {
       <div className="footer-content">
 
         <div className="footer-content-top">
-          <Link className="footer-logo-container">
+          <Link to="/" className="footer-logo-container">
             <img className="footer-logo" src="/plant-logo.png" alt="eagle store logo" />
             <h1 className="footer-brand-name"> EAGLE STORE </h1>
           </Link>
 
           <ul className="footer-pages-links">
-            <li><Link>Home</Link></li>
-            <li><Link>Shop</Link></li>
-            <li><Link>About</Link></li>
-            <li><Link>Contact</Link></li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/shop">Shop</Link></li>
+            <li><Link to="/about">About</Link></li>
+            <li><Link to="/contact">Contact</Link></li>
           </ul>
 
           <ul className="footer-socials-container">
