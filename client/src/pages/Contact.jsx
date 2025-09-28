@@ -1,4 +1,5 @@
 import Header from "../components/Header";
+import ContactDetails from "../components/home/ContactDetails";
 
 import "./styles/pages-section.css";
 
@@ -14,6 +15,7 @@ function Contact() {
           </div>
         </div>
       </header>
+      <ContactDetails/>
     </div>
   )
 }

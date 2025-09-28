@@ -1,0 +1,124 @@
+.contactDetails-container{
+  width: 70vw;
+  margin: 7rem auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.contactDetails-info-container{
+  width: 45%;
+}
+
+.contactDetails-title{
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin-bottom: 40px;
+}
+
+.contactDetails-icon-info-container{
+  display: flex;
+  gap: 20px;
+}
+
+.contactDetails-icon-container{
+  background-color: #ecf4d3;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+.contactDetails-icon-title{
+  font-size: 23px;
+  margin-bottom: 7px;
+}
+
+.contactDetails-icon-detail{
+  font-weight: 100;
+}
+
+.contactDetails-form-container{
+  width: 45%;
+}
+
+.contactDetails-form{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.contactDetails-form-input{
+  height: 40px;
+  margin-bottom: 30px;
+  font-weight: 400;
+  border: 1px solid rgb(203, 203, 203);
+  padding-left: 15px;
+  font-size: 16px;
+}
+
+.contactDetails-form-textArea{
+  height: 120px;
+  resize: none;
+  border: 1px solid rgb(203, 203, 203);
+  padding: 15px;
+  font-size: 16px;
+}
+
+.contactDetails-form-input:focus,
+.contactDetails-form-textArea:focus{
+  border: 1px dotted rgb(203, 203, 203); 
+  outline: none;
+}
+
+.contactDetails-form-link {
+  color: white;
+  text-decoration: none;
+  background-color: rgba(74, 137, 28, 0.99);
+  padding: 15px 30px;
+  border-radius: 30px;
+  font-weight: 300;
+}
+
+.contactDetails-form-link:hover{
+  background-color: hsla(95, 66%, 27%, 0.99);
+}
+
+/* === MEDIA QUERIES === */
+@media (max-width: 768px) {
+  .contactDetails-container{
+    width: 90vw;
+    margin: 3rem auto;
+    flex-direction: column;
+  }
+
+  .contactDetails-info-container{
+    width: 100%;
+  }
+
+  .contactDetails-icon-info-container{
+    flex-direction: column;
+    gap: 1px;
+    margin-bottom: 50px;
+  }
+
+  .contactDetails-icon-container{
+    margin-bottom: 20px;
+  }  
+
+  .contactDetails-icon-title{
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+
+  .contactDetails-icon-detail,
+  .contactDetails-form label{
+    font-size: 18px;
+  }
+
+  .contactDetails-form-container{
+    width: 100%;
+  }
+}
