@@ -5,16 +5,16 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import HomeDivider2 from "../components/home/HomeDivider2";
 
-import "./styles/Shop.css";
+import "./styles/pages-section.css";
 
 
 function About() {
   return(
-    <div className="shop-container">
-      <header className="shop-header" style={{backgroundImage: "url(/images/about/about-page.jpg)"}}>
-        <div className="shop-header-overlay">
+    <div className="pages-header-container">
+      <header className="pages-header" style={{backgroundImage: "url(/images/about/about-page.jpg)"}}>
+        <div className="pages-header-overlay">
           <Header/>
-          <div className="shop-title-container">
+          <div className="pages-title-container">
             <h1>ABOUT</h1>
             <p>We are Passionate <span>About Our Work</span></p>
           </div>
