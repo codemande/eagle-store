@@ -24,7 +24,7 @@ function Header() {
             <li><Link to="/">Home</Link></li>
             <li><Link to="/shop">Shop</Link></li>
             <li><Link to="/about">About</Link></li>
-            <li><Link>Contact</Link></li>
+            <li><Link to="/contact">Contact</Link></li>
           </ul>
           
           <span className="header-link-socials links">
@@ -70,7 +70,7 @@ function Header() {
             <Link to="/about" onClick={() => setMenuOpen(false)}>
               About
             </Link>
-            <Link onClick={() => setMenuOpen(false)}>
+            <Link to="/contact" onClick={() => setMenuOpen(false)}>
               Contact
             </Link>
             <Link onClick={() => setMenuOpen(false)}    className="cart-link-mobile">
