@@ -1,0 +1,14 @@
+.contactSocials-container{
+  background-color: #ecf4d3;
+  text-align: center;
+  padding: 4.5rem 10%;
+}
+
+.contactSocials-container h2{
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+.contactSocials-icon{
+ margin: 15px;
+}
