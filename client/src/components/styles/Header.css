@@ -28,6 +28,10 @@
   --border: #e5e7eb;
 }
 
+.header-desktop-header{
+  position: relative;
+}
+
 .container{
   display: flex;
   align-items: center;
@@ -180,6 +184,96 @@ li a:hover{
   color: var(--hover-color);
 }
 
+/* Cart Slide */
+.header-cart-slide-overlay{
+  width: 100vw;
+  height: 100vh;
+  background-color: hsla(0, 0%, 0%, 0.4);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 98;
+}
+
+.header-cart-slide-container{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 65%;
+  z-index: 100;
+  width: 35%;
+  height: 100vh;
+  overflow-y: auto;
+  background-color: white;
+}
+
+.header-cart-slide-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 65%;
+  border-bottom: 1px solid rgb(219, 217, 217);
+}
+
+.header-cart-slide-title{
+  font-size: 18px;
+}
+
+.header-cart-slide-close{
+  border: 1px dotted transparent;
+  padding: 10px 20px;
+  border-radius: 50px;
+}
+
+.header-cart-slide-close:hover,
+.header-cart-slide-close:focus{
+  border: 1px dotted rgb(219, 217, 217);
+}
+
+.header-cart-slide-items{
+  padding: 102px 25px;
+  z-index: 90;
+}
+
+.header-cart-slide-content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 204px);
+}
+
+.cart-slide-button-container{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 65%;
+  background-color: white;
+  padding: 25px;
+}
+
+.header-cart-slide-button{
+  display: block;
+  text-decoration: none;
+  background-color: rgba(74, 137, 28, 0.99);
+  padding: 15px 30px;
+  border-radius: 30px;
+  width: 100%;
+  text-align: center;
+  color: white;
+}
+
+.header-cart-slide-button:hover{
+  background-color: hsla(95, 66%, 27%, 0.99);
+}
+
 /* === MEDIA QUERIES === */
 @media (max-width: 768px) {
   .header-desktop-container{
@@ -197,4 +291,26 @@ li a:hover{
   .header .container {
     justify-content: space-between;
   } 
+  
+  /* Cart Slide */
+  .header-cart-slide-overlay{
+    display: none;
+  }
+
+  .header-cart-slide-container{
+    left: 0;
+    width: 100%;
+  }
+
+  .header-cart-slide-header{
+    left: 0;
+  }
+
+  .header-cart-slide-close{
+    border: 1px dotted rgb(219, 217, 217);
+  }
+
+  .cart-slide-button-container{
+    left: 0;
+  }
 } 
