@@ -75,9 +75,12 @@ function Header() {
           <Link to="/contact" onClick={() => setMenuOpen(false)}>
             Contact
           </Link>
-          <Link onClick={() => setMenuOpen(false)}    className="cart-link-mobile">
+          <Link onClick={() => {
+            setCartOpen(true);
+            setMenuOpen(false);
+          }} className="cart-link-mobile">
             <span style={{ position: "relative" }}>
-              <FaShoppingCart className="cart-icon" onClick={() => setCartOpen(true)}  />
+              <FaShoppingCart className="cart-icon"/>
               <span  className="cart-count">0</span>
             </span>
             Cart
