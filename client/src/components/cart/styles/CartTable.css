@@ -13,6 +13,7 @@
   width: 100%;
   text-align: left;
   border: 1px solid #ddd;
+  margin-bottom: 6rem;
 }
 
 .cartTable-head-row{
@@ -84,6 +85,11 @@ table th, tr, td {
 
 /* === MEDIA QUERIES === */
 @media (max-width: 768px) {
+  .cartTable-container{
+    padding-bottom: 17rem;
+    margin-top: 3rem;
+  }
+
   .cartTable-desktop{
     display: none;
   }
@@ -91,6 +97,7 @@ table th, tr, td {
   .cartTable-mobile{
     display: flex;
     justify-content: space-between;
+    margin-bottom: 25px;
   }
 
   .cartTable-mobile-left{
