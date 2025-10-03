@@ -24,7 +24,7 @@ function CartTotals() {
           <tr>
             <td colSpan={2}>
               <button className="cartTotals-cta-button">
-                <Link className="cartTotals-cta-link">Proceed to checkout</Link>
+                <Link to="/checkout" className="cartTotals-cta-link">Proceed to checkout</Link>
               </button>
             </td>
           </tr>
@@ -42,7 +42,7 @@ function CartTotals() {
           <p>$90.00</p>
         </div>
         <button className="cartTotals-mobile-btn">
-          <Link className="cartTotals-mobile-link">Go to Checkout</Link>
+          <Link to="/checkout" className="cartTotals-mobile-link">Go to Checkout</Link>
         </button>
       </div>
     </div>

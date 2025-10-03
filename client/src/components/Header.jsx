@@ -95,7 +95,8 @@ function Header() {
               <p className="header-cart-slide-content">No products in the cart.</p>
             </div>
             <div className="cart-slide-button-container">
-              <Link to="/shop" className="header-cart-slide-button">Continue Shopping</Link>
+              {/* testing cart link */}
+              <Link to="/cart" className="header-cart-slide-button">Continue Shopping</Link>
             </div>
           </div> }
         </div>
@@ -115,7 +116,8 @@ function Header() {
           <p className="header-cart-slide-content">No products in the cart.</p>
         </div>
         <div className="cart-slide-button-container">
-          <Link to="/shop" className="header-cart-slide-button">Continue Shopping</Link>
+          {/* testing cart link */}
+          <Link to="/cart" className="header-cart-slide-button">Continue Shopping</Link>
         </div>
       </div>}
     </header>
