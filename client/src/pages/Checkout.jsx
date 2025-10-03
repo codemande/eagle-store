@@ -1,5 +1,5 @@
 import Header from "../components/Header";
-import CheckoutForm from "../components/checkout/checkoutForm";
+import CheckoutForm from "../components/checkout/CheckoutForm.jsx";
 import HomeDivider2 from "../components/home/HomeDivider2";
 import Footer from "../components/Footer";
 import "./styles/Cart.css"
