@@ -1,3 +1,11 @@
 .cart-header-container{
   background-color: rgba(74, 137, 28, 0.99);
 }
+
+
+/* === MEDIA QUERIES === */
+@media (max-width: 768px) {
+  .cart-mobile-footer{
+    display: none;
+  }
+}

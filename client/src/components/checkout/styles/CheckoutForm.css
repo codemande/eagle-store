@@ -1,0 +1,93 @@
+.checkoutForm-container{
+  display: flex;
+  justify-content: space-between;
+  margin: 4rem auto;
+  align-items: flex-start;
+}
+
+.checkoutForm-form{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.checkoutForm-form-title,
+.checkoutForm-summary-title{
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+label{
+  margin: 15px 0 5px;
+}
+
+input{
+  outline: none;
+  margin-bottom: 20px;
+  height: 40px;
+}
+
+input:focus,
+.checkoutForm-form textarea:focus{
+  border: 1px solid rgba(74, 137, 28, 0.99);
+  padding: 15px;
+}
+
+.checkoutForm-form textarea{
+  height: 120px;
+  resize: none;
+  outline: none;
+}
+
+.checkoutForm-order-summary{
+  width: 40%;
+  border: 1px solid rgb(203, 203, 203);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.checkoutForm-summary-flex{
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+}
+
+.checkoutForm-summary-flex p{
+  font-size: 18px;
+}
+
+.checkoutForm-summary-total{
+  font-weight: 600;
+}
+
+.checkoutForm-summary-btn{  
+  background-color: rgba(74, 137, 28, 0.99);
+  padding: 15px 30px;
+  border-radius: 30px;
+  font-weight: 300;
+  border: none;
+  margin-top: 15px;
+}
+
+.checkoutForm-summary-btn a{
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/* === MEDIA QUERIES === */
+@media (max-width: 768px) {
+  .checkoutForm-container{
+    flex-direction: column;
+  }
+
+  .checkoutForm-form{
+    width: 100%;
+  }
+
+  .checkoutForm-order-summary{
+    margin-top: 60px;
+    width: 100%;
+  }
+}
