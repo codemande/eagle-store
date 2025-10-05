@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Zen Bamboo Grove",
+    "description": "Indoor Plants",
+    "price": 90,
+    "image": "images/products/zen-bamboo.jpg"
+  },
+  {
+    "name": "Starlight Succulent",
+    "description": "Indoor Plant",
+    "price": 95,
+    "image": "images/products/starlight.jpg"
+  },
+  {
+    "name": "Silver Mist",
+    "description": "Indoor Plant",
+    "price": 92,
+    "image": "images/products/silver-mist.jpg"
+  },
+  {
+    "name": "Dessert Bloom",
+    "description": "Indoor Plant",
+    "price": 70,
+    "image": "images/products/dessert.jpg"
+  },
+  {
+    "name": "Tropical Breeze",
+    "description": "Indoor Plant",
+    "price": 92,
+    "image": "images/products/tropical.jpg"
+  },
+  {
+    "name": "Golden Glow",
+    "description": "Indoor Plant",
+    "price": 85,
+    "image": "images/products/golden-glow.jpg"
+  },
+  {
+    "name": "Succulents",
+    "description": "Indoor Plant",
+    "price": 112,
+    "image": "images/products/succulents.jpg"
+  }
+]
