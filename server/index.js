@@ -44,9 +44,18 @@ app.post("/products", upload.single("image"), async (req, res) => {
 });
 
 // Route: Get all products
-app.get("/products", async (req, res) => {
-  try {
-    const result = await pool.query("SELECT * FROM products ORDER BY created_at DESC");
+app.get("/api/products", async (req, res) => {
+  try{
+    const q = (req.query.query || "").toLowerCase();
+    let result;
+    if (q) {
+      result = await pool.query(
+        'SELECT * FROM products WHERE LOWER(name) LIKE $1',
+        [`%${q}%`]
+      );
+    } else {
+      result = await pool.query("SELECT * FROM products ORDER BY created_at DESC");
+    }
     res.json(result.rows);
   } catch (err) {
     console.error(err);

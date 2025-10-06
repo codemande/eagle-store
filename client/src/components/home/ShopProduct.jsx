@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 import { CiStar } from "react-icons/ci";
 import { GiShoppingBag } from "react-icons/gi";
 

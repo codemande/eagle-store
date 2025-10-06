@@ -10,12 +10,12 @@ async function seed() {
   const products = JSON.parse(fs.readFileSync("./products.json", "utf8"));
 
   for (const product of products) {
-    const { name, description, price, image } = product;
+    const { name, slug, description, price, image } = product;
     const imagePath = `/uploads/${image}`;
 
     await pool.query(
-      "INSERT INTO products (name, description, price, image) VALUES ($1, $2, $3, $4)",
-      [name, description, price, imagePath]
+      "INSERT INTO products (name, slug, description, price, image) VALUES ($1, $2, $3, $4, $5)",
+      [name, slug, description, price, imagePath]
     );
 
     console.log(`Inserted: ${name} (${imagePath})`);
