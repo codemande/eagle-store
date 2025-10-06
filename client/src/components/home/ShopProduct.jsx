@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useSearchParams, Link } from "react-router-dom";
+import useCart from "../../context/useCart";
 
 import { CiStar } from "react-icons/ci";
 import { GiShoppingBag } from "react-icons/gi";
@@ -15,6 +16,8 @@ function ShopProduct() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const { addToCart } = useCart();
 
   useEffect(() => {
     setLoading(true);
@@ -62,7 +65,11 @@ function ShopProduct() {
                       <div className="displayProduct-cart-tooltip">
                         Add to cart
                       </div>
-                      <GiShoppingBag className="displayProduct-image-cart" />
+                      <GiShoppingBag className="displayProduct-image-cart" onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        addToCart(p) 
+                      }}/>
                     </div>
                   </div>
         
