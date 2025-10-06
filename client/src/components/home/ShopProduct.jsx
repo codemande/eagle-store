@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useSearchParams, Link } from "react-router-dom";
 
 import { CiStar } from "react-icons/ci";
 import { GiShoppingBag } from "react-icons/gi";
@@ -8,6 +9,24 @@ import "./styles/DisplayProduct.css";
 import "./styles/ShopProduct.css";
 
 function ShopProduct() {
+
+  const [params] = useSearchParams();
+  const q = params.get("query") || "";
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    setLoading(true);
+    setError(null);
+
+    axios
+      .get("http://localhost:4100/api/products", { params: { query: q } })
+      .then((res) => setItems(res.data))
+      .catch((err) => setError(err.message))
+      .finally(() => setLoading(false));
+  }, [q]);
+
   return(
     <div className="shopProduct-container">
 
@@ -23,138 +42,41 @@ function ShopProduct() {
         </select>
       </div>
 
+      {loading && <p>Loading products...</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
+
       <div>
 
         <div className="displayProduct-grid">
 
-          {/* Product 1 */}
-          <div className="displayProduct-item">
-            <div className="displayProduct-image-container">
-  
-              <img className="displayProduct-image" src="/images/products/product-01.jpg" alt="product image" />
-  
-              <div className="displayProduct-cart-container">
-                <div className="displayProduct-cart-tooltip">
-                  Add to cart
-                </div>
-                <GiShoppingBag className="displayProduct-image-cart" />
-              </div>
-            </div>
-  
-            <div className="displayProduct-description">
-              <CiStar /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" />
-              <p className="displayProduct-name">Zen Bamboo Grove</p>
-              <p className="displayProduct-type">Indoor Plants</p>
-              <p className="displayProduct-price">$90.00</p>
-            </div>
-          </div>
-
-          {/* Product 2 */}
-          <div className="displayProduct-item">
-            <div className="displayProduct-image-container">
-              <img className="displayProduct-image" src="/images/products/product-02.jpg" alt="product image" />
-  
-              <div className="displayProduct-cart-container">
-                <div className="displayProduct-cart-tooltip">
-                  Add to cart
-                </div>
-                <GiShoppingBag className="displayProduct-image-cart" />
-              </div>
-            </div>
-
-            <div className="displayProduct-description">
-              <CiStar /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar  className="displayProduct-stars"/><CiStar className="displayProduct-stars" />
-              <p className="displayProduct-name">Starlight Succulent</p>
-              <p className="displayProduct-type">Indoor Plants</p>
-              <p className="displayProduct-price">$95.00</p>
-            </div>
-          </div>
-
-          {/* Product 3 */}
-          <div className="displayProduct-item">
-  
-            <div className="displayProduct-image-container">
-              <img className="displayProduct-image" src="/images/products/product-03.jpg" alt="product image" />
-              <div className="displayProduct-cart-container">
-                <div className="displayProduct-cart-tooltip">
-                  Add to cart
-                </div>
-                <GiShoppingBag className="displayProduct-image-cart" />
-              </div>
-            </div>
-  
-            <div className="displayProduct-description">
-              <CiStar /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" />
-              <p className="displayProduct-name">Silver Mist</p>
-              <p className="displayProduct-type">Indoor Plants</p>
-              <p className="displayProduct-price">$92.00</p>
-            </div>
-          </div>
-
-          {/* Product 4 */}
-          <div className="displayProduct-item">
-  
-            <div className="displayProduct-image-container">
-              <img className="displayProduct-image" src="/images/products/product-05.jpg" alt="product image" />
-              <div className="displayProduct-cart-container">
-                <div className="displayProduct-cart-tooltip">
-                  Add to cart
-                </div>
-                <GiShoppingBag className="displayProduct-image-cart" />
-              </div>
-            </div>
-  
-            <div className="displayProduct-description">
-              <CiStar /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" />
-              <p className="displayProduct-name">Dessert Bloom</p>
-              <p className="displayProduct-type">Indoor Plants</p>
-              <p className="displayProduct-price">$70.00</p>
-            </div>
-          </div>
-
-          {/* Product 5 */}
-          <div className="displayProduct-item">
-  
-            <div className="displayProduct-image-container">
-              <img className="displayProduct-image" src="/images/products/product-04.jpg" alt="product image" />
-              <div className="displayProduct-cart-container">
-                <div className="displayProduct-cart-tooltip">
-                  Add to cart
-                </div>
-                <GiShoppingBag className="displayProduct-image-cart" />
-              </div>
-            </div>
-  
-            <div className="displayProduct-description">
-              <CiStar /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" />
-              <p className="displayProduct-name">Tropical Breeze</p>
-              <p className="displayProduct-type">Indoor Plants</p>
-              <p className="displayProduct-price">$92.00</p>
-            </div>
-          </div>
-
-          {/* Product 6 */}
-          <div className="displayProduct-item">
-  
-            <div className="displayProduct-image-container">
-              <img className="displayProduct-image" src="/images/products/outdoor-plant.jpg" alt="product image" />
-              <div className="displayProduct-cart-container">
-                <div className="displayProduct-cart-tooltip">
-                  Add to cart
-                </div>
-                <GiShoppingBag className="displayProduct-image-cart" />
-              </div>
-            </div>
-  
-            <div className="displayProduct-description">
-              <CiStar /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" />
-              <p className="displayProduct-name">Golden Glow</p>
-              <p className="displayProduct-type">Indoor Plants</p>
-              <p className="displayProduct-price">$85.00</p>
-            </div>
-          </div>
-        </div>
-
+          {!loading && 
+            !error &&
+            items.map((p) => {
+              return (
+                <Link to={`/product/${p.slug}`} className="displayProduct-item">
+                  <div className="displayProduct-image-container">
+        
+                    <img className="displayProduct-image" src={`http://localhost:4100${p.image}`} alt={p.name} />
+        
+                    <div className="displayProduct-cart-container">
+                      <div className="displayProduct-cart-tooltip">
+                        Add to cart
+                      </div>
+                      <GiShoppingBag className="displayProduct-image-cart" />
+                    </div>
+                  </div>
+        
+                  <div className="displayProduct-description">
+                    <CiStar /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" />
+                    <p className="displayProduct-name">{p.name}</p>
+                    <p className="displayProduct-type">{p.description}</p>
+                    <p className="displayProduct-price">${p.price.toLocaleString()}</p>
+                  </div>
+                </Link>
+              )
+            })
+          }
+        </div> 
       </div>
     </div>
   )
