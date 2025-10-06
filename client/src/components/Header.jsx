@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import useCart from "../context/useCart";
 import { FaFacebook, FaInstagram, FaYoutube, FaShoppingCart } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -10,6 +11,11 @@ import './styles/Header.css';
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false); 
   const [cartOpen, setCartOpen] = useState(false);
+
+  const { cart } = useCart();
+
+  //count total quantity instead of cart.length
+  const cartCount = cart.reduce((sum, item) => sum + item.qty, 0);
 
   return (
     <header className="header-desktop-header">
@@ -46,7 +52,9 @@ function Header() {
 
           <Link className="cart-icon-link">
             <FaShoppingCart className="cart-icon" onClick={() => setCartOpen(true)} />
-            <span className="cart-count bounce">0</span>
+            <span key={cartCount} className="cart-count bounce">
+              {cartCount}
+            </span>
           </Link>
         </div>
 
@@ -81,7 +89,9 @@ function Header() {
           }} className="cart-link-mobile">
             <span style={{ position: "relative" }}>
               <FaShoppingCart className="cart-icon"/>
-              <span  className="cart-count">0</span>
+              <span key={cartCount} className="cart-count">
+                {cartCount}
+              </span>
             </span>
             Cart
           </Link>
