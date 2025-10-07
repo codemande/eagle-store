@@ -1,8 +1,32 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useSearchParams } from "react-router-dom";
 import { CiStar } from "react-icons/ci";
 import { GiShoppingBag } from "react-icons/gi";
+import useCart from "../../context/useCart";
 import "./styles/DisplayProduct.css";
 
 function HomePopularProduct() {
+
+  const [params] = useSearchParams();
+  const q = params.get("query") || "";
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const { addToCart } = useCart();
+
+  useEffect(() => {
+    setLoading(true);
+    setError(null);
+
+    axios
+      .get("http://localhost:4100/api/products", { params: { query: q } })
+      .then((res) => setItems(res.data))
+      .catch((err) => setError(err.message))
+      .finally(() => setLoading(false));
+  }, [q]);
+
   return(
     <div className="displayProduct-container">
 
@@ -10,66 +34,37 @@ function HomePopularProduct() {
 
       <div className="displayProduct-grid">
 
-        <div>
-          <div className="displayProduct-image-container">
-            <img className="displayProduct-image" src="/images/products/product-05.jpg" alt="product image" />
+        {!loading &&
+          !error &&
+          items.slice(0, 3).map((p) => {
+            return (
+              <div>
+                <div className="displayProduct-image-container">
 
-            <div className="displayProduct-cart-container">
-              <div className="displayProduct-cart-tooltip">
-                Add to cart
+                  <img className="displayProduct-image" src={`http://localhost:4100${p.image}`} alt={p.name} />
+
+                  <div className="displayProduct-cart-container">
+                    <div className="displayProduct-cart-tooltip">
+                      Add to cart
+                    </div>
+                    <GiShoppingBag className="displayProduct-image-cart" onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        addToCart(p) 
+                      }} />
+                  </div>
+                </div>
+
+                <div>
+                  <CiStar /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" />
+                  <p className="displayProduct-name">{p.name}</p>
+                  <p className="displayProduct-type">{p.description}</p>
+                  <p className="displayProduct-price">${p.price.toLocaleString()}</p>
+                </div>
               </div>
-              <GiShoppingBag className="displayProduct-image-cart" />
-            </div>
-          </div>
-
-          <div>
-            <CiStar /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" />
-            <p className="displayProduct-name">Desert Bloom</p>
-            <p className="displayProduct-type">Indoor Plants</p>
-            <p className="displayProduct-price">$70.00</p>
-          </div>
-        </div>
-
-        <div>
-          <div className="displayProduct-image-container">
-            <img className="displayProduct-image" src="/images/products/product-04.jpg" alt="product image" />
-
-            <div className="displayProduct-cart-container">
-              <div className="displayProduct-cart-tooltip">
-                Add to cart
-              </div>
-              <GiShoppingBag className="displayProduct-image-cart" />
-            </div>
-          </div>
-
-          <div>
-            <CiStar /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" />
-            <p className="displayProduct-name">Golden Glow</p>
-            <p className="displayProduct-type">Indoor Plants</p>
-            <p className="displayProduct-price">$85.00</p>
-          </div>
-        </div>
-
-        <div>
-          <div className="displayProduct-image-container">
-            <img className="displayProduct-image" src="/images/products/product-06.jpg" alt="product image" />
-
-            <div className="displayProduct-cart-container">
-              <div className="displayProduct-cart-tooltip">
-                Add to cart
-              </div>
-              <GiShoppingBag className="displayProduct-image-cart" />
-            </div>
-          </div>
-
-          <div>
-            <CiStar /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" />
-            <p className="displayProduct-name">Silver Mist</p>
-            <p className="displayProduct-type">Indoor Plants</p>
-            <p className="displayProduct-price">$92.00</p>
-          </div>
-        </div>
-
+            )
+          })
+        }
       </div>
     </div>
   )
