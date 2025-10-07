@@ -9,14 +9,10 @@ function CartProvider({ children }) {
     setCart((prev) => {
 
       //if product already exist in cart
-      const existing = prev.find((item) => {
-        return item.id === product.id
-      });
+      const existing = prev.find((item) => item.id === product.id);
       if (existing) {
-        return(
-          prev.map((item) => {
-            return item.id === product.id ? { ...item, qty: item.qty + qty} : item
-          })
+        return prev.map((item) =>
+          item.id === product.id ? { ...item, qty: item.qty + qty } : item
         );
       }
 
@@ -31,20 +27,18 @@ function CartProvider({ children }) {
       return removeFromCart(id);
     }
 
-    setCart((prev) => {
-      prev.map((item) => {
-        return item.id === id ? { ...item, qty } : item
-      })
-    });
+    setCart((prev) =>
+      prev.map((item) =>
+        item.id === id ? { ...item, qty } : item
+      )
+    );
   }
 
   //Remove from cart
   function removeFromCart(id) {
-    setCart((prev) => {
-      return prev.filter((item) => {
-        return item.id !== id
-      })
-    });
+    setCart((prev) =>
+      prev.filter((item) => item.id !== id)
+    );
   }
 
   //Clear cart

@@ -1,3 +1,28 @@
+.cartTable-empty-container{
+  width: 86vw;
+  margin: 15rem auto;
+  text-align: center;
+}
+
+.cartTable-empty-container h2{
+  font-size: 2.5rem;
+  margin-bottom: 4rem;
+}
+
+.cartTable-empty-container .btn{
+  text-decoration: none;
+  color: white;
+  border: 1px solid white;
+  padding: 15px 30px;
+  border-radius: 50px;
+  background-color: rgba(74, 137, 28, 0.99);
+  border: none;
+}
+
+.cartTable-empty-container .btn:hover{
+  background-color: hsla(95, 66%, 27%, 0.99);
+}
+
 .cartTotals-container{
   width: 50%;
   margin-left: auto;
@@ -34,6 +59,11 @@
 
 /* === MEDIA QUERIES === */
 @media (max-width: 768px) {
+  .cartTable-empty-container h2{
+    font-size: 2rem;
+    margin-bottom: 3.5rem;
+  }
+
   .cartTotals-desktop{
     display: none;
   }

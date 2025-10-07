@@ -6,7 +6,7 @@ function CartTotals() {
   return(
     <div>
       <table className="cartTotals-container cartTotals-desktop">
-        <caption ></caption>
+        
         <tbody>
           <tr>
             <td colSpan={2} className="cartTotals-title">

@@ -56,7 +56,7 @@ function ShopProduct() {
             !error &&
             items.map((p) => {
               return (
-                <Link to={`/product/${p.slug}`} className="displayProduct-item">
+                <Link to={`/product/${p.slug}`} className="displayProduct-item" key={p.id}>
                   <div className="displayProduct-image-container">
         
                     <img className="displayProduct-image" src={`http://localhost:4100${p.image}`} alt={p.name} />
