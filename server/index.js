@@ -1,9 +1,9 @@
 import express from "express";
-import multer from "multer";
 import path from "path";
 import cors from "cors";
 import dotenv from "dotenv";
 import pool from './db.js';
+import { upload } from "./cloudinary.js";
 
 dotenv.config();
 const app = express();
@@ -29,27 +29,27 @@ app.use(cors({
 }));
 app.use(express.json());
 
-// Multer setup for uploads
-const storage = multer.diskStorage({
-  destination: "uploads/",
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + "-" + file.originalname);
-  },
-});
-const upload = multer({ storage });
-
 // Make uploads folder public
 app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
 // Route: Add product
 app.post("/products", upload.single("image"), async (req, res) => {
   try {
-    const { name, description, price } = req.body;
-    const imagePath = `/uploads/${req.file.filename}`;
+    const { name, slug, description, price } = req.body;
+    
+    // Cloudinary gives req.file.path (a full https URL)
+    // Local gives req.file.filename (a local file)
+    let imagePath = "";
+
+    if (req.file?.path && req.file.path.startsWith("http")) {
+      imagePath = req.file.path; // Cloudinary URL
+    } else if (req.file?.filename) {
+      imagePath = `/uploads/${req.file.filename}`; // Local file
+    }
 
     const result = await pool.query(
-      "INSERT INTO products (name, description, price, image) VALUES ($1, $2, $3, $4) RETURNING *",
-      [name, description, price, imagePath]
+      "INSERT INTO products (name, slug, description, price, image) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+      [name, slug, description, price, imagePath]
     );
 
     res.json({ success: true, product: result.rows[0] });

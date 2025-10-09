@@ -46,7 +46,7 @@ function CartTable() {
                     </div>
                   </td>
 
-                  <td><img src={`${API_BASE_URL}${item.image}`} className="cartTable-image" alt={item.name} /></td>
+                  <td><img src={ item.image.startsWith("http") ? item.image : `http://localhost:4100${item.image}`} className="cartTable-image" alt={item.name} /></td>
                   <td className="cartTable-product-name"> {item.name}</td>
                   <td>${(item.price).toLocaleString()}</td>
 
@@ -75,7 +75,7 @@ function CartTable() {
           <div className="cartTable-mobile">
             <div className="cartTable-mobile-left">
               <div className="cartTable-mobile-image-container">
-                <img src={`${API_BASE_URL}${item.image}`}  className="cartTable-image" alt={item.name}/>
+                <img src={ item.image.startsWith("http") ? item.image : `http://localhost:4100${item.image}`}  className="cartTable-image" alt={item.name}/>
               </div>
               <div className="cartTable-mobile-name-container">
                 <p className="cartTable-product-name">{item.name}</p>

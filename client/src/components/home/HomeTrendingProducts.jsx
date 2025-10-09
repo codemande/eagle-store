@@ -42,7 +42,7 @@ function HomeTrendingProducts() {
               <div>
                 <div className="displayProduct-image-container">
 
-                  <img className="displayProduct-image" src={`${API_BASE_URL}${p.image}`} alt={p.name} />
+                  <img className="displayProduct-image" src={ p.image.startsWith("http") ? p.image : `http://localhost:4100${p.image}`} alt={p.name} />
 
                   <div className="displayProduct-cart-container">
                     <div className="displayProduct-cart-tooltip">
