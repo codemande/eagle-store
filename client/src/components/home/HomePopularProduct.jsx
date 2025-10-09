@@ -7,6 +7,7 @@ import useCart from "../../context/useCart";
 import "./styles/DisplayProduct.css";
 
 function HomePopularProduct() {
+  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:4100";
 
   const [params] = useSearchParams();
   const q = params.get("query") || "";
@@ -21,7 +22,7 @@ function HomePopularProduct() {
     setError(null);
 
     axios
-      .get("http://localhost:4100/api/products", { params: { query: q } })
+      .get(`${API_BASE_URL}/api/products`, { params: { query: q } })
       .then((res) => setItems(res.data))
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
@@ -41,7 +42,7 @@ function HomePopularProduct() {
               <div>
                 <div className="displayProduct-image-container">
 
-                  <img className="displayProduct-image" src={`http://localhost:4100${p.image}`} alt={p.name} />
+                  <img className="displayProduct-image" src={`${API_BASE_URL}${p.image}`} alt={p.name} />
 
                   <div className="displayProduct-cart-container">
                     <div className="displayProduct-cart-tooltip">
