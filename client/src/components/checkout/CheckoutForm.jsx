@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useCart from "../../context/useCart";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import "./styles/CheckoutForm.css"
+import "../ThankYou/ThankYouDetails.css";
 
 function CheckoutForm() {
   const { cart, clearCart } = useCart();
@@ -57,21 +58,9 @@ function CheckoutForm() {
 
   if (!cart || cart.length === 0) {
     return (
-      <div className="checkoutForm-noCart-container" style={{ padding: "2rem 0", textAlign: "center" }}>
+      <div className="thankYouDetails-container" >
         <h2>Your cart is empty <ShoppingCartIcon style={{fontSize:"35px", verticalAlign: "middle"}}/> </h2>
-        <Link
-          to="/shop"
-          className="btn"
-          style={{
-            marginTop: "1rem",
-            background: "var(--accent)",
-            border: "none",
-            padding: "0.75rem 1.5rem",
-            borderRadius: "6px",
-            color: "#fff",
-            textDecoration: "none",
-          }}
-        >
+        <Link to="/shop" className="thankYouDetails-btn">
           Shop Now
         </Link>
       </div>
