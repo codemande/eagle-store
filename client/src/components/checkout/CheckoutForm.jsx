@@ -47,7 +47,7 @@ function CheckoutForm() {
       clearCart(); // empty cart
 
       // navigate to thank-you page and pass order data via state
-      // navigate("/thank-you", { state: { orderData } });
+      navigate("/thank-you", { state: { orderData } });
     } catch (err) {
       console.error("Order submit failed:", err);
     } finally { 
