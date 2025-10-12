@@ -9,7 +9,7 @@ function Cart() {
   return(
     <div className="pages-header-container">
       <header className="pages-header" style={{backgroundImage: "url(/images/cart/cart-header2.jpg)"}}>
-        <div className="cart-header-container pages-header-overlay">
+        <div className="pages-header-overlay">
           <Header />
           <div className="pages-title-container">
             <h1>CART</h1>
