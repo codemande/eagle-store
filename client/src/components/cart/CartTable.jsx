@@ -23,51 +23,50 @@ function CartTable() {
 
   return(
     <div className="cartTable-container">
-      <h1 className="cartTable-header">Cart</h1>
 
-        <table className="cartTable-table cartTable-desktop">
-          <thead className="cartTable-head-row">
-            <tr className="cartTable-head-row">
-              <th>&nbsp;</th>
-              <th>&nbsp;</th>
-              <th>Product</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Subtotal</th>
-            </tr>
-          </thead>
-          <tbody>
-            {cart.map((item) => {
-              return(
-                <tr key={item.id}>
-                  <td>
-                    <div className="cartTable-remove">
-                      <CloseIcon style={{fontSize: "small", color: "#ddd"}} onClick={() => removeFromCart(item.id)}/>
-                    </div>
-                  </td>
+      <table className="cartTable-table cartTable-desktop">
+        <thead className="cartTable-head-row">
+          <tr className="cartTable-head-row">
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+          </tr>
+        </thead>
+        <tbody>
+          {cart.map((item) => {
+            return(
+              <tr key={item.id}>
+                <td>
+                  <div className="cartTable-remove">
+                    <CloseIcon style={{fontSize: "small", color: "#ddd"}} onClick={() => removeFromCart(item.id)}/>
+                  </div>
+                </td>
 
-                  <td><img src={ item.image.startsWith("http") ? item.image : `${import.meta.env.VITE_API_URL || "http://localhost:4100"}${item.image}`} className="cartTable-image" alt={item.name} /></td>
-                  <td className="cartTable-product-name"> {item.name}</td>
-                  <td>${(item.price).toLocaleString()}</td>
+                <td><img src={ item.image.startsWith("http") ? item.image : `${import.meta.env.VITE_API_URL || "http://localhost:4100"}${item.image}`} className="cartTable-image" alt={item.name} /></td>
+                <td className="cartTable-product-name"> {item.name}</td>
+                <td>${(item.price).toLocaleString()}</td>
 
-                  <td>
-                    <button className="cartTable-quantity-btn" style={{marginRight:"5px"}} onClick={() => updateQty(item.id, Math.max(1, item.qty - 1))}>
-                      -
-                    </button>
+                <td>
+                  <button className="cartTable-quantity-btn" style={{marginRight:"5px"}} onClick={() => updateQty(item.id, Math.max(1, item.qty - 1))}>
+                    -
+                  </button>
 
-                    <span>{item.qty}</span>
+                  <span>{item.qty}</span>
 
-                    <button className="cartTable-quantity-btn" style={{marginLeft:"5px"}} onClick={() => updateQty(item.id, item.qty + 1)}>
-                      +
-                    </button>
-                  </td>
+                  <button className="cartTable-quantity-btn" style={{marginLeft:"5px"}} onClick={() => updateQty(item.id, item.qty + 1)}>
+                    +
+                  </button>
+                </td>
 
-                  <td>${(item.price * item.qty).toLocaleString()}</td>
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
+                <td>${(item.price * item.qty).toLocaleString()}</td>
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
 
 
       {cart.map((item) => {
