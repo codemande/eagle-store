@@ -132,7 +132,7 @@ function Header() {
                 <div key={item.id}>
                   <div className="cart-slide-items-container">
                     <div className="cart-slide-image-container">
-                      <img src={`http://localhost:4100${item.image}`} className="cart-slide-item-image" alt={item.name} />
+                      <img src={ item.image.startsWith("http") ? item.image : `${import.meta.env.VITE_API_URL || "http://localhost:4100"}${item.image}`} alt={item.name} className="cart-slide-item-image"/>
                       <div className="cart-slide-name-container">
                         <div className="cart-slide-item-name">{item.name}</div>
                         <div className="cart-slide-item-price">{item.qty} X {`$${item.price}`}</div>
