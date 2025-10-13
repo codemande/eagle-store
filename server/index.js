@@ -36,7 +36,7 @@ app.get("/test-db", async (req, res) => {
   }
 });
 
-// Route: Add product
+// Add product route
 app.post("/products", upload.single("image"), async (req, res) => {
   try {
     const { name, slug, description, price } = req.body;
