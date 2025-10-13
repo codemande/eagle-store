@@ -1,5 +1,6 @@
 
 import LoginLeftCard from "../components/login/LoginLeftCard";
+import LoginRightCard from "../components/login/LoginRightCard";
 import "./styles/Login.css";
 
 function Login() {
@@ -7,6 +8,7 @@ function Login() {
     <div className="login-container">
       <div className="login-card-container">
         <LoginLeftCard/>
+        <LoginRightCard/>
       </div>
     </div>
   )

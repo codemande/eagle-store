@@ -1,0 +1,78 @@
+:root{
+  --Login-right-green: rgb(26, 77, 26);
+  --Hover-login-right-green: hsl(120, 50%, 40%);
+  --Hover-login-word-green: hsl(120, 50%, 10%);
+}
+
+.loginRightCard-container{
+  width: 50%;
+  background-image: url("/login-walpaper.jpg");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.loginRightCard-overlay{
+  background-color: hsla(120, 4%, 65%, 0.7);
+  width: 400px;
+  height: 400px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.loginRightCard-overlay form{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.loginRightCard-context{
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.loginRightCard-label{
+  font-weight: 200;
+  font-size: 11px;
+  margin-bottom: 10px;
+}
+
+.loginRightCard-input{
+  height: 40px;
+  border: none;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-top-right-radius: 20px;
+  margin-bottom: 15px;
+}
+
+.loginRightCard-forgot{
+  text-align: right;
+  margin-bottom: 15px;
+}
+
+.loginRightCard-label span{
+  color: var(--Login-right-green);
+  cursor: pointer;
+}
+
+.loginRightCard-label span:hover{
+  color: var(--Hover-login-word-green);
+}
+
+.loginRightCard-btn{
+  background-color: var(--Login-right-green);
+  color: white;
+  cursor: pointer;
+}
+
+.loginRightCard-btn:hover{
+  background-color: var(--Hover-login-right-green);
+}

@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 
 import "./styles/LoginLeftCard.css"
 
@@ -8,14 +8,14 @@ function LoginLeftCard() {
 
       <div className="loginLeftCard-top-container">
 
-        <div className="loginLeftCard-logo-container">
+        <Link className="loginLeftCard-logo-container">
           <img className="loginLeftCard-logo" src="/plant-logo.png" alt="eagle store logo" />
           <p className="loginLeftCard-name">EAGLE STORE</p>
-        </div>
+        </Link>
 
         <h1 className="loginLeftCard-header">Welcome Back!</h1>
         <p className="loginLeftCard-text">
-          We source the healthiest and most beautiful plants to bring nature's finest to your home. We provide expert care advice to ensure your plants thrive
+          We’re excited to have you back where your love for nature meets smart design. Sign in to keep growing your plant collection, access expert tips, and stay inspired by nature’s calm and color.
         </p>
 
         <div className="loginLeftCard-login-options">
