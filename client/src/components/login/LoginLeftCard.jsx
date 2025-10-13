@@ -8,7 +8,7 @@ function LoginLeftCard() {
 
       <div className="loginLeftCard-top-container">
 
-        <Link className="loginLeftCard-logo-container">
+        <Link to="/" className="loginLeftCard-logo-container">
           <img className="loginLeftCard-logo" src="/plant-logo.png" alt="eagle store logo" />
           <p className="loginLeftCard-name">EAGLE STORE</p>
         </Link>

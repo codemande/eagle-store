@@ -7,10 +7,23 @@
 }
 
 .login-card-container{
-  /* width: 90%; */
   height: 80vh;
   display: flex;
   justify-content: center;
   margin-top: 10vh;
 }
 
+/* === MEDIA QUERIES === */
+@media (max-width: 768px) {
+  .login-container{
+    height: auto;
+    bottom: 0;
+    overflow-y: auto;
+  }
+
+  .login-card-container{
+    margin-top: 0;
+    height: auto;
+    flex-direction: column;
+  }
+}

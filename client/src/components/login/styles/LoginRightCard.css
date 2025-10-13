@@ -9,8 +9,7 @@
   background-image: url("/login-walpaper.jpg");
   display: flex;
   justify-content: center;
-  align-items: center;
-  
+  align-items: center; 
 }
 
 .loginRightCard-overlay{
@@ -75,4 +74,12 @@
 
 .loginRightCard-btn:hover{
   background-color: var(--Hover-login-right-green);
+}
+
+/* === MEDIA QUERIES === */
+@media (max-width: 768px) {
+  .loginRightCard-container{
+    width: 100%;  
+    height: 100vh;
+  }
 }

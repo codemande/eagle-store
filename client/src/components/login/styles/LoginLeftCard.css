@@ -69,5 +69,11 @@
 
 .loginLeftCard-image{
   width: 100%;
- 
+}
+
+/* === MEDIA QUERIES === */
+@media (max-width: 768px) {
+  .loginLeftCard-container{
+    display: none;
+  }
 }
