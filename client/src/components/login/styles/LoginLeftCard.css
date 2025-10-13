@@ -1,0 +1,72 @@
+:root{
+  --Login-green: green;
+}
+
+.loginLeftCard-container{
+  background-color: white;
+  width: 30vw;
+  position: relative;
+}
+
+.loginLeftCard-top-container{
+  width: 60%;
+  margin: 6rem auto 0;
+  text-align: justify;
+}
+
+.loginLeftCard-logo-container{
+  display: flex;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+
+.loginLeftCard-logo{
+  width: 50px;
+  margin-right: 3px;
+}
+
+.loginLeftCard-name{
+  color: var(--Login-green);
+  font-size: 18px;
+}
+
+.loginLeftCard-header{
+  color: var(--Login-green);
+  margin-bottom: .7rem;
+}
+
+.loginLeftCard-text{
+  margin-bottom: 2.3rem;
+  font-size: 12px;
+}
+
+.loginLeftCard-login-options{
+  display: flex;
+  align-items: center;
+  background-color: rgb(227, 226, 226);
+  margin: 15px 0;
+  cursor: pointer;
+}
+
+.loginLeftCard-login-option-logo{
+  width: 35px;
+  padding: 10px;
+  background-color: var(--Login-green);
+}
+
+.loginLeftCard-login-option-text{
+  margin-left: 35px;
+  font-size: 12px;
+}
+
+.loginLeftCard-image-container{
+  width: 230px;
+  position: absolute;
+  bottom: -15px;
+  left: 15px;
+}
+
+.loginLeftCard-image{
+  width: 100%;
+ 
+}
