@@ -34,7 +34,7 @@ function Footer() {
         <hr />
 
         <div className="footer-copyright">
-          Copyright &copy; {year} Codemande Tech for Eagle Store
+          Copyright &copy; {year} JasontheUgoh for Eagle Store
         </div>
       </div>
     </div>
