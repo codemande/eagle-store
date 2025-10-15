@@ -9,6 +9,8 @@ import Checkout from "./pages/Checkout";
 import ThankYou from "./pages/ThankYou";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import Admin from "./pages/Admin";
+import User from "./pages/User";
 
 function App() {
   
@@ -25,6 +27,8 @@ function App() {
       <Route path="/thank-you" element={<ThankYou/>} />
       <Route path="/login" element={<Login/>} />
       <Route path="/signup" element={<SignUp/>} />
+      <Route path="/admin" element={<Admin/>} />
+      <Route path="/user" element={<User/>} />
     </Routes>
     
   )
