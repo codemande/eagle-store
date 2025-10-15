@@ -14,8 +14,8 @@
 
 .loginRightCard-overlay{
   background-color: hsla(120, 4%, 65%, 0.7);
-  width: 400px;
-  height: 400px;
+  width: 500px;
+  height: 600px;
   color: white;
   display: flex;
   justify-content: center;
@@ -41,6 +41,8 @@
   font-weight: 200;
   font-size: 11px;
   margin-bottom: 10px;
+  text-decoration: none;
+  color: white;
 }
 
 .loginRightCard-input{

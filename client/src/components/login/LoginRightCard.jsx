@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 import "./styles/LoginRightCard.css";
 
 function LoginRightCard() {
@@ -22,7 +22,9 @@ function LoginRightCard() {
 
           <button className="loginRightCard-input loginRightCard-btn">Login</button>
 
-          <p className="loginRightCard-label"> Don't have an account? <span>Register</span></p>
+          <Link to="/signUp" className="loginRightCard-label"> 
+            Don't have an account? <span>Register</span>
+          </Link>
         </form>
       </div>
     </div>
