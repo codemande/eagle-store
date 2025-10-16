@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import './App.css'
 import Home from './pages/Home'
 import Shop from "./pages/Shop";
@@ -13,7 +13,7 @@ import Admin from "./pages/Admin";
 import User from "./pages/User";
 
 function App() {
-  
+  const user = localStorage.getItem("user");
 
   return (
     
@@ -29,6 +29,9 @@ function App() {
       <Route path="/signup" element={<SignUp/>} />
       <Route path="/admin" element={<Admin/>} />
       <Route path="/user" element={<User/>} />
+      <Route path="/dashboard" 
+        element={user ? <Dashboard /> : <Navigate to="/login" />}
+      />
     </Routes>
     
   )

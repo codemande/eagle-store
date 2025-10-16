@@ -13,6 +13,8 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 4100;
 
+const JWT_SECRET = process.env.JWT_SECRET;
+
 // Middleware
 app.use(cors({
   origin: process.env.CLIENT_URL || "http://localhost:5173",
@@ -27,6 +29,7 @@ function verifyUser(req, res, next) {
   if (!token) {
     return res.status(401).json({ error: "Not authorized" });
   }
+
   try {
     const verified = jwt.verify(token, JWT_SECRET);
     req.user = verified;
@@ -35,8 +38,6 @@ function verifyUser(req, res, next) {
     return res.status(403).json({ error: "Invalid token" });
   }
 };
-
-const JWT_SECRET = process.env.JWT_SECRET;
 
 // Serve local uploads only when using local mode 
 if (process.env.USE_CLOUDINARY !== "true") { 
@@ -203,6 +204,20 @@ app.post("/api/users/register", async (req, res) => {
   } catch (error) {
     console.error("Error during registration:", error);
     return res.status(500).json({ error: "Server error" });
+  }
+});
+
+// Protected route - only logged-in users can access
+app.get("/api/users/profile", verifyUser, async (req, res) => {
+  try {
+    const result = await pool.query(
+      "SELECT id, name, email, phone FROM users WHERE id = $1",
+      [req.user.id]
+    );
+    res.json(result.rows[0]);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server error" });
   }
 });
 
