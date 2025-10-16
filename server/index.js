@@ -3,6 +3,9 @@ import path from "path";
 import cors from "cors";
 import dotenv from "dotenv";
 import pool from './db.js';
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import cookieParser from "cookie-parser";
 import { upload } from "./cloudinary.js";
 
 dotenv.config();
@@ -16,6 +19,9 @@ app.use(cors({
   credentials: true
 }));
 app.use(express.json());
+app.use(cookieParser());
+
+const JWT_SECRET = process.env.JWT_SECRET;
 
 // Serve local uploads only when using local mode 
 if (process.env.USE_CLOUDINARY !== "true") { 
@@ -80,6 +86,53 @@ app.get("/api/products", async (req, res) => {
   } catch (err) {
     console.error( "Failed to fetch products:", err);
     res.status(500).json({ error: "Failed to fetch products" });
+  }
+});
+
+//User Registration Route
+app.post("/api/users/register", async (req, res) => {
+  const { name, email, phone, password } = req.body;
+
+  try {
+    // Check if user already exists
+    const userExists = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
+    if (userExists.rows.length > 0) {
+      return res.status(400).json({ error: "Email already registered" });
+    }
+
+    // Hash the password before saving
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Insert new user into the database
+    const newUser = await pool.query(
+      "INSERT INTO users (name, email, phone, password) VALUES ($1, $2, $3, $4) RETURNING id, name, email, phone",
+      [name, email, phone, hashedPassword]
+    );
+
+    const savedUser = newUser.rows[0];
+
+    // Create a token for the new user
+    const token = jwt.sign(
+      { id: savedUser.id, email: savedUser.email, role: "user" },
+      JWT_SECRET,
+      { expiresIn: "1d" }
+    );
+
+    // Set cookie and send success response
+    res.cookie("userToken", token, {
+      httpOnly: true,
+      sameSite: "strict",
+      secure: false, // true if HTTPS
+    });
+
+    return res.status(201).json({
+      message: "Registration successful",
+      user: { id: savedUser.id, name: savedUser.name, email: savedUser.email, phone: savedUser.phone },
+      token,
+    });
+  } catch (error) {
+    console.error("Error during registration:", error);
+    return res.status(500).json({ error: "Server error" });
   }
 });
 
