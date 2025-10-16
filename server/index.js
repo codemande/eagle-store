@@ -93,6 +93,10 @@ app.get("/api/products", async (req, res) => {
 app.post("/api/users/register", async (req, res) => {
   const { name, email, phone, password } = req.body;
 
+  if (!name || !email || !phone || !password) {
+    return res.status(400).json({ error: "All fields are required" });
+  }
+
   try {
     // Check if user already exists
     const userExists = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
