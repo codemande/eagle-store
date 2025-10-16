@@ -1,55 +1,28 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import AuthContext from "../../context/AuthContext";
 import "./styles/LoginRightCard.css";
 
 function LoginRightCard() {
 
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
+  const [email, setEmail] = useState("");
 
-  const [message, setMessage] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
-  
-  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:4100";
 
-  // handle input change
-  function handleChange(event){
-    const { name, value } = event.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+  const { login, loading } = useContext(AuthContext);
 
   // handle form submit
   async function handleSubmit(event){
     event.preventDefault();
-    setLoading(true);
-    setMessage("");
 
     try{
-      const res = await axios.post(
-        `${API_BASE_URL}/api/users/login`,
-        formData,
-        { withCredentials: true } //include cookies 
-      );
-
-      // Successful login
-      setMessage("Login successful!");
-      console.log("User:", res.data.user);
-
-      //save user data in localStorage
-      localStorage.setItem("user", JSON.stringify(res.data.user));
-
-      navigate("/user");
+      await login(email, password);
+      navigate("/dashboard");
     } catch (err){
-      console.error(err);
-      setMessage(err.response?.data?.error || "Invalid email or password");
-    } finally {
-      setLoading(false);
+      alert("Invalid credentials", err);
     }
   }
   
@@ -62,20 +35,18 @@ function LoginRightCard() {
           <label className="loginRightCard-label" htmlFor="email">
             Enter Email Address
           </label>
-          <input className="loginRightCard-input" type="text" required
-            name="email" value={formData.email} onChange={handleChange}
+          <input className="loginRightCard-input" type="email" required
+            name="email" value={email} onChange={(e) => setEmail(e.target.value)}
           />
 
           <label className="loginRightCard-label" htmlFor="password">
             Enter Password
           </label>
           <input className="loginRightCard-input" type="password" required
-            name="password" value={formData.password} onChange={handleChange}
+            name="password" value={password} onChange={(e) => setPassword(e.target.value)}
           />
 
           <p className="loginRightCard-label loginRightCard-forgot">Forget <span>Password?</span></p>
-
-          {message && <p style={{textAlign: "center", color: "#444",}}>{message}</p>}
 
           <button className="loginRightCard-input loginRightCard-btn" type="submit" disabled={loading}>
             {loading ? "Logging in..." : "Login"}

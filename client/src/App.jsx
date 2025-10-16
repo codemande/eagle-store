@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import './App.css'
 import Home from './pages/Home'
 import Shop from "./pages/Shop";
@@ -12,9 +12,9 @@ import SignUp from "./pages/SignUp";
 import Admin from "./pages/Admin";
 import User from "./pages/User";
 import Dashboard from "./users/Dashboard";
+import { PrivateRoute } from "./context/PrivateRoute";
 
 function App() {
-  const user = localStorage.getItem("user");
 
   return (
     
@@ -31,7 +31,11 @@ function App() {
       <Route path="/admin" element={<Admin/>} />
       <Route path="/user" element={<User/>} />
       <Route path="/dashboard" 
-        element={user ? <Dashboard /> : <Navigate to="/login" />}
+        element={
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        }
       />
     </Routes>
     

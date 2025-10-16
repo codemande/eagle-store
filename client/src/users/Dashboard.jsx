@@ -1,37 +1,19 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useContext } from "react";
+import AuthContext from "../context/AuthContext";
 
 const Dashboard = () => {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
-  useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        const res = await axios.get("http://localhost:5000/api/users/profile", {
-          withCredentials: true, // sends cookie automatically
-        });
-        setUser(res.data);
-      } catch (err) {
-        console.error("Auth check failed:", err);
-        setError("You are not logged in");
-      } finally {
-        setLoading(false);
-      }
-    };
+  const { user, logout, loading } = useContext(AuthContext);
 
-    checkAuth();
-  }, []);
+  if (loading) {
+    return <p>Checking authentication...</p>;
+  }
 
-  if (loading) return <p>Checking authentication...</p>;
-
-  if (error) {
+  if (!user) {
     // if not logged in, redirect or show message
     return (
-      <div style={styles.container}>
-        <p>{error}</p>
-        <a href="/login" style={styles.link}>Go to Login</a>
+      <div>
+        <p>Not logged in. <a href="/login">Login here</a></p>
       </div>
     );
   }
@@ -42,13 +24,7 @@ const Dashboard = () => {
       <p>Email: {user.email}</p>
       <p>Phone: {user.phone}</p>
 
-      <button
-        onClick={async () => {
-          await axios.post("http://localhost:5000/api/users/logout", {}, { withCredentials: true });
-          localStorage.removeItem("user");
-          window.location.href = "/login";
-        }}
-        style={styles.button}
+      <button onClick={logout} style={styles.button}
       >
         Logout
       </button>
