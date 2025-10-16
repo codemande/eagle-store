@@ -21,6 +21,21 @@ app.use(cors({
 app.use(express.json());
 app.use(cookieParser());
 
+// Middleware to protect user routes
+function verifyUser(req, res, next) {
+  const token = req.cookies.userToken;
+  if (!token) {
+    return res.status(401).json({ error: "Not authorized" });
+  }
+  try {
+    const verified = jwt.verify(token, JWT_SECRET);
+    req.user = verified;
+    next();
+  } catch {
+    return res.status(403).json({ error: "Invalid token" });
+  }
+};
+
 const JWT_SECRET = process.env.JWT_SECRET;
 
 // Serve local uploads only when using local mode 
@@ -88,6 +103,57 @@ app.get("/api/products", async (req, res) => {
     res.status(500).json({ error: "Failed to fetch products" });
   }
 });
+
+// User Login Route
+app.post("/api/users/login", async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    // Check if user exists
+    const result = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
+    const user = result.rows[0];
+
+    if (!user) {
+      return res.status(401).json({ error: "Invalid email or password" });
+    }
+
+    // Compare passwords
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(401).json({ error: "Invalid email or password" });
+    }
+
+    // Create a JWT token (contains user id & email)
+    const token = jwt.sign(
+      { id: user.id, email: user.email },
+      JWT_SECRET,
+      { expiresIn: "1d" } // token lasts for 1 day
+    );
+
+    // Send token as HTTP-only cookie
+    res.cookie("userToken", token, {
+      httpOnly: true,
+      sameSite: "strict",
+      secure: false, // change to true in production (HTTPS)
+    });
+
+    // Send success message and user info
+    res.json({
+      message: "Login successful",
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        phone: user.phone,
+      },
+    });
+
+  } catch (error) {
+    console.error("Login error:", error);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
 
 //User Registration Route
 app.post("/api/users/register", async (req, res) => {
