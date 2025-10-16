@@ -193,7 +193,7 @@ app.post("/api/users/register", async (req, res) => {
     res.cookie("userToken", token, {
       httpOnly: true,
       sameSite: "strict",
-      secure: false, // true if HTTPS....remember to turn to true for production›
+      secure: process.env.NODE_ENV === "production", // true if HTTPS.
     });
 
     return res.status(201).json({
