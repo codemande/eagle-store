@@ -53,7 +53,7 @@ function SignUpRightCard() {
     <div className="loginRightCard-container">
       <div className="loginRightCard-overlay">
         <form onSubmit={handleSubmit}>
-          <p className="loginRightCard-context">Please Enter Your Login Details</p>
+          <p className="loginRightCard-context">Create Your Account Below.</p>
 
           <label className="loginRightCard-label" htmlFor="email">
             Enter Email Address

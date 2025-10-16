@@ -20,7 +20,7 @@ const Dashboard = () => {
 
   return (
     <div style={styles.container}>
-      <h2 style={styles.title}>Welcome, {user.name} 👋</h2>
+      <h2 style={styles.title}>Welcome, {user.name} </h2>
       <p>Email: {user.email}</p>
       <p>Phone: {user.phone}</p>
 

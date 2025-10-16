@@ -6,6 +6,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdClose } from "react-icons/md";
 import CloseIcon from '@mui/icons-material/Close';
+import { FaUserAlt } from "react-icons/fa";
 import './styles/Header.css';
 
 function Header() {
@@ -36,6 +37,7 @@ function Header() {
             <li><Link to="/shop">Shop</Link></li>
             <li><Link to="/about">About</Link></li>
             <li><Link to="/contact">Contact</Link></li>
+            <li><Link to="/login"><FaUserAlt style={{fontSize: "18px"}}/></Link></li>
           </ul>
           
           <span className="header-link-socials links">
@@ -95,6 +97,7 @@ function Header() {
             </span>
             Cart
           </Link>
+          <Link to="/login" className="cart-link-mobile"><FaUserAlt style={{fontSize: "18px"}}/> Login </Link>
           {cartOpen && <div className="header-cart-slide-container">
             <div className="header-cart-slide-header">
               <p className="header-cart-slide-title">Shopping Cart</p>
