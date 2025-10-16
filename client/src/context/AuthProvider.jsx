@@ -1,7 +1,6 @@
-import { createContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-
-export const AuthContext = createContext();
+import AuthContext from "./AuthContext";
 
 export const AuthProvider = ({ children }) => {
 
@@ -12,7 +11,7 @@ export const AuthProvider = ({ children }) => {
 
   // Check if user is logged in on first load
   useEffect(() => {
-    const verifyUser = async () => {
+    async function verifyUser() {
       try {
         const res = await axios.get(`${API_BASE_URL}/api/users/profile`, {
           withCredentials: true, // send cookies
@@ -28,7 +27,7 @@ export const AuthProvider = ({ children }) => {
     verifyUser();
   }, []);
 
-  const login = async (email, password) => {
+  async function login(email, password) {
     const res = await axios.post(
       `${API_BASE_URL}/api/users/login`,
       { email, password },
@@ -38,7 +37,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem("user", JSON.stringify(res.data.user));
   };
 
-  const logout = async () => {
+  async function logout() {
     await axios.post(`${API_BASE_URL}/api/users/logout`, {}, { withCredentials: true });
     setUser(null);
     localStorage.removeItem("user");

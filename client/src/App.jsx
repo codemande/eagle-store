@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Admin from "./pages/Admin";
 import User from "./pages/User";
+import Dashboard from "./users/Dashboard";
 
 function App() {
   const user = localStorage.getItem("user");
