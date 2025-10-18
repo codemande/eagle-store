@@ -105,6 +105,25 @@ app.get("/api/products", async (req, res) => {
   }
 });
 
+// Get slug route
+app.get('/api/products/:slug', async (req, res) => {
+  try {
+    const { slug } = req.params;
+    const result = await pool.query(
+      'SELECT * FROM products WHERE slug = $1',
+      [slug]
+    );
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error('Error fetching product', err);
+    res.status(500).json({ error: 'server error' });
+  }
+});
+
+
 // User Login Route
 app.post("/api/users/login", async (req, res) => {
   const { email, password } = req.body;

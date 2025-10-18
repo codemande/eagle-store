@@ -13,6 +13,7 @@ import Admin from "./pages/Admin";
 import User from "./pages/User";
 import Dashboard from "./users/Dashboard";
 import { PrivateRoute } from "./context/PrivateRoute";
+import Product from "./pages/Product";
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home/>} />
       <Route path="/shop" element={<Shop/>} />
+      <Route path="/shop/:slug" element={<Product/>} />
       <Route path="/about" element={<About/>} />
       <Route path="/contact" element={<Contact/>} />
       <Route path="/cart" element={<Cart/>} />
