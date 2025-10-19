@@ -1,7 +1,7 @@
 .product-details-container{
   width: 80vw;
   display: flex;
-  margin: 6rem auto;
+  margin: 3rem auto 6rem;
   flex-wrap: wrap;
   gap: 2rem;
 }
@@ -13,7 +13,8 @@
 
 .product-details-back-link{
   display: block;
-  margin-bottom: .7rem;
+  max-width: 300px;
+  margin: 3rem 0 0 10vw;
 }
 
 .product-details-image{
@@ -26,6 +27,7 @@
   flex: 2 1 400px;
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 
 .product-info-name,
@@ -47,6 +49,7 @@
 .product-info-qty{
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: .5rem;
   margin: 1rem 0;
   margin-bottom: 1.5rem;

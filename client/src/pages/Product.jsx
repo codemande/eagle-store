@@ -55,14 +55,14 @@ function Product() {
         </div>
       </header>
 
+      <Link to="/shop" className="product-details-back-link product-info-btn" >
+        ← Back to Shop
+      </Link>
+
 
       <div className="product-details-container">
         {/* Product Image */}
         <div className="product-details-image-container">
-
-          <Link to="/shop" className="product-details-back-link product-info-btn" >
-            ← Back to Shop
-          </Link>
 
           <img
             src={product.image}
