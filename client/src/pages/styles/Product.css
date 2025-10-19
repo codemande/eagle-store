@@ -8,7 +8,6 @@
 }
 
 .product-details-container{
-  
   display: flex;
   margin: 3rem auto 6rem;
   flex-wrap: wrap;
@@ -84,4 +83,11 @@
   min-width: 40px;
   text-align: center;
   font-weight: bold;
+}
+
+/* === MEDIA QUERIES === */
+@media (max-width: 768px) {
+  .product-details-container{
+    justify-content: center;
+  }
 }
