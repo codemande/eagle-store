@@ -42,18 +42,17 @@
 .product-info-price,
 .product-info-description{
   margin-bottom: 2rem;
+  text-align: center;
 }
 
 .product-info-price{
   font-size: 1.25rem;
   font-weight: bold;
   color: hsla(95, 66%, 27%, 0.99);
-  text-align: center;
 }
 
 .product-info-description{
   color: #a2a1a1;
-  text-align: center;
 }
 
 .product-info-qty{
