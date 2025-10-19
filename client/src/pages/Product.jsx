@@ -50,52 +50,59 @@ function Product() {
           <Header/>
           <div className="pages-title-container">
             <h1>PRODUCT VIEW</h1>
-            <p>{product.name} looks lovely</p>
+            <p>{product.name} Looks Lovely</p>
           </div>
         </div>
       </header>
 
-      <Link to="/shop" className="product-details-back-link product-info-btn" >
-        ← Back to Shop
-      </Link>
+      <div className="product-container">
 
+        <Link to="/shop" className="product-details-back-link product-info-btn" >
+          ← Back to Shop
+        </Link>
 
-      <div className="product-details-container">
-        {/* Product Image */}
-        <div className="product-details-image-container">
+        <div>
 
-          <img
-            src={product.image}
-            alt={product.name}
-            className="product-details-image"
-          />
-        </div>
+          <div className="product-details-container">
+          {/* Product Image */}
+            <div className="product-details-image-container">
 
-        {/* Product Info */}
-        <div className="product-info-container">
+              <img
+                src={product.image}
+                alt={product.name}
+                className="product-details-image"
+              />
+            </div>
 
-          <h2 className="product-info-name">{product.name}</h2>
+            {/* Product Info */}
+            <div className="product-info-container">
 
-          <p className="product-info-price">
-            ${product.price.toLocaleString()}
-          </p>
+              <h2 className="product-info-name">{product.name}</h2>
 
-          <p className="product-info-description">{product.description}</p>
+              <p className="product-info-price">
+                ${product.price.toLocaleString()}
+              </p>
 
-          {/* Quantity Selector */}
-          <div className="product-info-qty">
+              <p className="product-info-description">{product.description}</p>
 
-            <button onClick={() => setQty((q) => Math.max(1, q - 1))} className="product-info-btn"> – </button>
+              {/* Quantity Selector */}
+              <div className="product-info-qty">
 
-            <span className="product-info-qty-count">{qty}</span>
+                <button onClick={() => setQty((q) => Math.max(1, q - 1))} className="product-info-btn"> – </button>
 
-            <button onClick={() => setQty((q) => q + 1)} className="product-info-btn">+</button>
+                <span className="product-info-qty-count">{qty}</span>
+
+                <button onClick={() => setQty((q) => q + 1)} className="product-info-btn">+</button>
+              </div>
+
+              <button className="product-info-btn" onClick={() => addToCart(product, qty)}>
+                Add {qty} to Cart
+              </button>
+            </div>
           </div>
 
-          <button className="product-info-btn" onClick={() => addToCart(product, qty)}>
-            Add {qty} to Cart
-          </button>
         </div>
+
       </div>
 
       <HomeDivider2/>

@@ -6,12 +6,12 @@ dotenv.config();
 const { Pool } = pkg;
 
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL ||  process.env.LOCAL_DATABASE_URL,
-  ssl: {
-    require: true,               // Force SSL
-    rejectUnauthorized: false,   // Allow self-signed certs
-  }, 
-  // ssl: false
+  connectionString:  process.env.LOCAL_DATABASE_URL, //process.env.DATABASE_URL ||
+  // ssl: {
+  //   require: true,               // Force SSL
+  //   rejectUnauthorized: false,   // Allow self-signed certs
+  // }, 
+  ssl: false
 });
 
 pool.connect()
