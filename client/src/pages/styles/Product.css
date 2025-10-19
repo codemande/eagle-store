@@ -10,10 +10,10 @@
 .product-details-container{
   
   display: flex;
-  flex-direction: row;
   margin: 3rem auto 6rem;
   flex-wrap: wrap;
   gap: 5rem;
+  align-items: center;
 }
 
 .product-details-image-container{
