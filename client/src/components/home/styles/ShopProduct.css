@@ -29,6 +29,28 @@
   border: 1px dotted #747171;
 }
 
+.addtocart-notification{
+  position: fixed;
+  background-color: rgba(74, 137, 28, 0.99);
+  color: white;
+  left: 0;
+  right: 0;
+  top: 0;
+  padding: 10px 0;
+  z-index: 101;
+  text-align: center;
+}
+
+.addtocart-notification-close{
+  border: 1px solid white;
+  vertical-align: middle;
+  margin-left: 7px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.addtocart-notification-close{}
+
 /* === MEDIA QUERIES === */
 @media (max-width: 768px) {
   .shopProduct-select-container{

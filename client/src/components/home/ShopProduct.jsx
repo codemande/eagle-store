@@ -2,10 +2,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useSearchParams, Link } from "react-router-dom";
 import useCart from "../../context/useCart";
-
 import { CiStar } from "react-icons/ci";
 import { GiShoppingBag } from "react-icons/gi";
-
+import { MdClose } from "react-icons/md";
 import "./styles/DisplayProduct.css";
 import "./styles/ShopProduct.css";
 
@@ -17,8 +16,33 @@ function ShopProduct() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const [showPopUp, setShowPopUp] = useState(false); // state for added to cart notification
+  const [timer, setTimer] = useState(null); // clear add to cart notification
   const { addToCart } = useCart();
+
+  function addIconClick() {
+    //reset timer if already showing
+    if (timer) clearTimeout(timer); 
+    setShowPopUp(true);
+
+    const newTimer = setTimeout(() => {
+      setShowPopUp(false);
+    }, 5000);
+
+    setTimer(newTimer)
+  }
+
+  function removePopUp() {
+    if(timer) clearTimeout(timer);
+    setShowPopUp(false);
+  }
+
+  // Cleanup timeout when component unmounts
+  useEffect(() => {
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
+  }, [timer]);
 
   useEffect(() => {
     setLoading(true);
@@ -53,6 +77,11 @@ function ShopProduct() {
 
         <div className="displayProduct-grid">
 
+          {/* Add to cart notification */}
+          {showPopUp && (
+            <div className="addtocart-notification">Added Successfully <MdClose onClick={removePopUp} className="addtocart-notification-close"/></div>
+          )}
+
           {!loading && 
             !error &&
             items.map((p) => {
@@ -70,6 +99,7 @@ function ShopProduct() {
                         e.preventDefault();
                         e.stopPropagation();
                         addToCart(p) 
+                        addIconClick()
                       }}/>
                     </div>
                   </div>

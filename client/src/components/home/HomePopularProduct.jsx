@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, Link } from "react-router-dom";
 import { CiStar } from "react-icons/ci";
 import { GiShoppingBag } from "react-icons/gi";
+import { MdClose } from "react-icons/md";
 import useCart from "../../context/useCart";
 import "./styles/DisplayProduct.css";
 
@@ -14,8 +15,33 @@ function HomePopularProduct() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const [showPopUp, setShowPopUp] = useState(false); // state for added to cart notification
+  const [timer, setTimer] = useState(null); // clear add to cart notification
   const { addToCart } = useCart();
+
+  function addIconClick() {
+    //reset timer if already showing
+    if (timer) clearTimeout(timer); 
+    setShowPopUp(true);
+
+    const newTimer = setTimeout(() => {
+      setShowPopUp(false);
+    }, 5000);
+
+    setTimer(newTimer)
+  }
+
+  function removePopUp() {
+    if(timer) clearTimeout(timer);
+    setShowPopUp(false);
+  }
+
+  // Cleanup timeout when component unmounts
+  useEffect(() => {
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
+  }, [timer]);
 
   useEffect(() => {
     setLoading(true);
@@ -35,33 +61,41 @@ function HomePopularProduct() {
 
       <div className="displayProduct-grid">
 
+        {/* Add to cart notification */}
+        {showPopUp && (
+          <div className="addtocart-notification">Added Successfully <MdClose onClick={removePopUp} className="addtocart-notification-close"/></div>
+        )}
+
         {!loading &&
           !error &&
           items.slice(0, 3).map((p) => {
             return (
               <div>
-                <div className="displayProduct-image-container">
+                <Link to={`/product/${p.slug}`} className="displayProduct-item" key={p.id}>
+                  <div className="displayProduct-image-container">
 
-                  <img className="displayProduct-image" src={ p.image.startsWith("http") ? p.image : `${import.meta.env.VITE_API_URL || "http://localhost:4100"}${p.image}`} alt={p.name} />
+                    <img className="displayProduct-image" src={ p.image.startsWith("http") ? p.image : `${import.meta.env.VITE_API_URL || "http://localhost:4100"}${p.image}`} alt={p.name} />
 
-                  <div className="displayProduct-cart-container">
-                    <div className="displayProduct-cart-tooltip">
-                      Add to cart
+                    <div className="displayProduct-cart-container">
+                      <div className="displayProduct-cart-tooltip">
+                        Add to cart
+                      </div>
+                      <GiShoppingBag className="displayProduct-image-cart" onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          addToCart(p) 
+                          addIconClick()
+                        }} />
                     </div>
-                    <GiShoppingBag className="displayProduct-image-cart" onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        addToCart(p) 
-                      }} />
                   </div>
-                </div>
 
-                <div>
-                  <CiStar /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" />
-                  <p className="displayProduct-name">{p.name}</p>
-                  <p className="displayProduct-type">{p.description}</p>
-                  <p className="displayProduct-price">${p.price.toLocaleString()}</p>
-                </div>
+                  <div>
+                    <CiStar /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" />
+                    <p className="displayProduct-name">{p.name}</p>
+                    <p className="displayProduct-type">{p.description}</p>
+                    <p className="displayProduct-price">${p.price.toLocaleString()}</p>
+                  </div>
+                </Link>
               </div>
             )
           })
