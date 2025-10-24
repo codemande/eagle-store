@@ -6,6 +6,18 @@
   --home-overlay-background-color: rgba(0, 0, 0, 0.7);
 }
 
+.home-page-popup{
+  position: fixed;
+  background-color: rgba(74, 137, 28, 0.99);
+  color: white;
+  left: 0;
+  right: 0;
+  top: 0;
+  padding: 10px 0;
+  z-index: 101;
+  text-align: center;
+}
+
 .hero-home-page-container{
   background-image: var(--home-background-image);
   width: 100vw;
