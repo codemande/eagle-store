@@ -14,14 +14,40 @@ import './styles/Header.css';
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false); 
   const [cartOpen, setCartOpen] = useState(false);
+  const [userOpen, setUserOpen] = useState(false);
+  const [message, setMessage] = useState(" ");
+  const [showPopUp, setShowPopUp] = useState(false);//logout notification
+  const [timer, setTimer] = useState(null);// clear logout notification
   const { cart, removeFromCart } = useCart();
-  const { login } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
 
   //count total quantity instead of cart.length
   const cartCount = cart.reduce((sum, item) => sum + item.qty, 0);
 
   // calculate total price
   const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+
+  async function handleLogout() {
+    const msg = await logout();
+    setMessage(msg);
+
+    //reset timer if already showing
+    if (timer) clearTimeout(timer); 
+    setShowPopUp(true);
+
+    const newTimer = setTimeout(() => {
+      setShowPopUp(false);
+      setMessage("");
+    }, 5000);
+
+    setTimer(newTimer)
+  }
+
+   function removePopUp() {
+    if(timer) clearTimeout(timer);
+    setShowPopUp(false);
+    setMessage("");
+  }
 
   return (
     <header className="header-desktop-header">
@@ -40,20 +66,32 @@ function Header() {
             <li><Link to="/about">About</Link></li>
             <li><Link to="/contact">Contact</Link></li>
 
-            <li>
-              {/* <Link to="/login"><FaUserAlt style={{fontSize: "18px"}}/></Link> */}
-              <Link to="/login"><FaUserAlt style={{fontSize: "18px"}}/></Link>
-              <ul className="header-desktop-account-sections">
-                <li><Link><FaRegUser className="header-desktop-account-icons" /> <span className="header-desktop-account-name">My Account</span></Link></li>
+            <li onClick={() => setUserOpen(prev => !prev)}>
+              {!user ?
+                <Link to="/login"><FaUserAlt style={{fontSize: "18px"}}/></Link> : 
+                (<div>
+                  <Link><FaUserAlt style={{fontSize: "18px"}}/></Link>
+                  
+                  {userOpen &&
+                    <ul className="header-desktop-account-sections">
+                      <li><Link><FaRegUser className="header-desktop-account-icons" /> <span className="header-desktop-account-name">My Account</span></Link></li>
 
-                <li><Link><BsBoxSeam className="header-desktop-account-icons" /> <span className="header-desktop-account-name">Order</span></Link></li>
+                      <li><Link><BsBoxSeam className="header-desktop-account-icons" /> <span className="header-desktop-account-name">Order</span></Link></li>
 
-                <li><Link><FaRegEnvelope className="header-desktop-account-icons" /> <span className="header-desktop-account-name">Inbox</span></Link></li>
+                      <li><Link><FaRegEnvelope className="header-desktop-account-icons" /> <span className="header-desktop-account-name">Inbox</span></Link></li>
 
-                <hr />
+                      <hr />
 
-                <li className="header-desktop-btn-section"><Link className="header-desktop-account-link">Logout</Link></li>
-              </ul>
+                      <li className="header-desktop-btn-section"><Link className="header-desktop-account-link" onClick={handleLogout}>Logout</Link></li>
+                    </ul>
+                  }
+                </div>)  
+              }
+              {showPopUp && (
+                <div className="header-desktop-logout-popup">{message}<MdClose onClick={removePopUp} className="addtocart-notification-close"/></div>
+              )}
+              
+              
             </li>
           </ul>
           

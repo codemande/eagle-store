@@ -38,9 +38,14 @@ export const AuthProvider = ({ children }) => {
   };
 
   async function logout() {
-    await axios.post(`${API_BASE_URL}/api/users/logout`, {}, { withCredentials: true });
-    setUser(null);
-    localStorage.removeItem("user");
+    try{
+      const res = await axios.post(`${API_BASE_URL}/api/users/logout`, {}, { withCredentials: true });
+      setUser(null);
+      localStorage.removeItem("user");
+      return res.data.message;
+    } catch(error){
+      return error.response?.data?.error || "Logout failed";
+    }
   };
 
   return (

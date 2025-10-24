@@ -174,6 +174,23 @@ app.post("/api/users/login", async (req, res) => {
   }
 });
 
+// User Logout Route
+app.post("/api/users/logout", (req, res) => {
+  try {
+    // Clear the cookie by setting it to empty and expiring immediately
+    res.clearCookie("userToken", {
+      httpOnly: true,
+      sameSite: "strict",
+      secure: false, // change to true in production
+    });
+
+    res.json({ message: "Logout successful" });
+  } catch (error) {
+    console.error("Logout error:", error);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
 
 //User Registration Route
 app.post("/api/users/register", async (req, res) => {

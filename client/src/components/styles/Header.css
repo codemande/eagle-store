@@ -134,6 +134,18 @@ header .logo{
   background-color: hsla(95, 66%, 27%, 0.2);
 }
 
+.header-desktop-logout-popup{
+  position: fixed;
+  background-color: rgba(74, 137, 28, 0.99);
+  color: white;
+  left: 0;
+  right: 0;
+  top: 0;
+  padding: 10px 0;
+  z-index: 101;
+  text-align: center;
+}
+
 .links a,
 .cart-icon-link{
   color: var(--text-color);
