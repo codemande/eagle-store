@@ -20,7 +20,7 @@ function LoginRightCard() {
 
     try{
       await login(email, password);
-      navigate("/dashboard");
+      navigate("/");
     } catch (err){
       alert("Invalid credentials", err);
     }

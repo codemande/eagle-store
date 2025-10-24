@@ -28,13 +28,18 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   async function login(email, password) {
-    const res = await axios.post(
+    try{
+      const res = await axios.post(
       `${API_BASE_URL}/api/users/login`,
-      { email, password },
-      { withCredentials: true }
-    );
-    setUser(res.data.user);
-    localStorage.setItem("user", JSON.stringify(res.data.user));
+        { email, password },
+        { withCredentials: true }
+      );
+      setUser(res.data.user);
+      localStorage.setItem("user", JSON.stringify(res.data.user));
+      return res.data.message;
+    } catch(error){
+      return error.response?.data?.error || "Login failed";
+    }
   };
 
   async function logout() {

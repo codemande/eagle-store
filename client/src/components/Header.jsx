@@ -43,7 +43,7 @@ function Header() {
     setTimer(newTimer)
   }
 
-   function removePopUp() {
+  function removePopUp() {
     if(timer) clearTimeout(timer);
     setShowPopUp(false);
     setMessage("");
