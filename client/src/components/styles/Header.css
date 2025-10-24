@@ -74,6 +74,66 @@ header .logo{
   font-size: var(--pages-links-font);
 }
 
+.desktop-pages-links li:last-child{
+  position: relative;
+}
+
+.desktop-pages-links li:last-child ul{
+  position: absolute;
+  display: block;
+  left: -90px;
+  margin-top: 10px;
+  width: 200px;
+  list-style: none;
+}
+
+.header-desktop-account-sections{
+  background-color: white;
+  border-radius: 10px;
+}
+
+.header-desktop-account-sections li{
+  padding: 20px;
+}
+
+.header-desktop-account-sections li:hover{
+  background-color: hsla(95, 66%, 27%, 0.2);
+}
+
+.header-desktop-account-sections li:last-child:hover{
+  background-color: transparent;
+}
+
+.header-desktop-account-sections li a{
+  color: hsla(95, 66%, 27%, 0.99);
+  font-weight: 500;
+}
+
+.header-desktop-account-icons{
+  font-size: 20px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.header-desktop-account-name{
+  vertical-align: middle;
+}
+
+.header-desktop-btn-section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-desktop-account-link{
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.header-desktop-account-link:hover{
+  background-color: hsla(95, 66%, 27%, 0.2);
+}
+
 .links a,
 .cart-icon-link{
   color: var(--text-color);

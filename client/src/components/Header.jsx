@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import useCart from "../context/useCart";
 import { FaFacebook, FaInstagram, FaYoutube, FaShoppingCart } from "react-icons/fa";
@@ -6,14 +6,16 @@ import { FaXTwitter } from "react-icons/fa6";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdClose } from "react-icons/md";
 import CloseIcon from '@mui/icons-material/Close';
-import { FaUserAlt } from "react-icons/fa";
+import { FaUserAlt, FaRegUser, FaRegEnvelope } from "react-icons/fa";
+import AuthContext from "../context/AuthContext";
+import { BsBoxSeam } from "react-icons/bs";
 import './styles/Header.css';
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false); 
   const [cartOpen, setCartOpen] = useState(false);
-
   const { cart, removeFromCart } = useCart();
+  const { login } = useContext(AuthContext);
 
   //count total quantity instead of cart.length
   const cartCount = cart.reduce((sum, item) => sum + item.qty, 0);
@@ -37,7 +39,22 @@ function Header() {
             <li><Link to="/shop">Shop</Link></li>
             <li><Link to="/about">About</Link></li>
             <li><Link to="/contact">Contact</Link></li>
-            <li><Link to="/login"><FaUserAlt style={{fontSize: "18px"}}/></Link></li>
+
+            <li>
+              {/* <Link to="/login"><FaUserAlt style={{fontSize: "18px"}}/></Link> */}
+              <Link to="/login"><FaUserAlt style={{fontSize: "18px"}}/></Link>
+              <ul className="header-desktop-account-sections">
+                <li><Link><FaRegUser className="header-desktop-account-icons" /> <span className="header-desktop-account-name">My Account</span></Link></li>
+
+                <li><Link><BsBoxSeam className="header-desktop-account-icons" /> <span className="header-desktop-account-name">Order</span></Link></li>
+
+                <li><Link><FaRegEnvelope className="header-desktop-account-icons" /> <span className="header-desktop-account-name">Inbox</span></Link></li>
+
+                <hr />
+
+                <li className="header-desktop-btn-section"><Link className="header-desktop-account-link">Logout</Link></li>
+              </ul>
+            </li>
           </ul>
           
           <span className="header-link-socials links">
@@ -97,7 +114,8 @@ function Header() {
             </span>
             Cart
           </Link>
-          <Link to="/login" className="cart-link-mobile"><FaUserAlt style={{fontSize: "18px"}}/> Login </Link>
+          <Link to="/login" className="cart-link-mobile"><FaUserAlt style={{fontSize: "18px"}}/> Account </Link>
+
           {cartOpen && <div className="header-cart-slide-container">
             <div className="header-cart-slide-header">
               <p className="header-cart-slide-title">Shopping Cart</p>
