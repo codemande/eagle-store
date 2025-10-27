@@ -74,7 +74,12 @@ function Header() {
                   
                   {userOpen &&
                     <ul className="header-desktop-account-sections">
-                      <li><Link><FaRegUser className="header-desktop-account-icons" /> <span className="header-desktop-account-name">My Account</span></Link></li>
+                      <li>
+                        <Link to="/account">
+                          <FaRegUser className="header-desktop-account-icons" /> 
+                          <span className="header-desktop-account-name">My Account</span>
+                        </Link>
+                      </li>
 
                       <li><Link><BsBoxSeam className="header-desktop-account-icons" /> <span className="header-desktop-account-name">Order</span></Link></li>
 

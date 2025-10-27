@@ -14,6 +14,7 @@ import User from "./pages/User";
 import Dashboard from "./users/Dashboard";
 import { PrivateRoute } from "./context/PrivateRoute";
 import Product from "./pages/Product";
+import Account from "./user/Account";
 
 function App() {
 
@@ -36,6 +37,13 @@ function App() {
         element={
           <PrivateRoute>
             <Dashboard />
+          </PrivateRoute>
+        }
+      />
+      <Route path="/account" 
+        element={
+          <PrivateRoute>
+            <Account />
           </PrivateRoute>
         }
       />
