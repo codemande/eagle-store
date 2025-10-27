@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "../login/styles/LoginRightCard.css";
 
 function SignUpRightCard() {
@@ -16,6 +17,8 @@ function SignUpRightCard() {
 
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   // Handle input change
   const handleChange = (event) => {
@@ -37,6 +40,10 @@ function SignUpRightCard() {
 
       setMessage("Registration successful!");
       setFormData({ name: "", email: "", phone: "", password: "" });
+
+      setTimeout(() => {
+        navigate("/login")
+      }, 3000);
      
     } catch (err) {
       console.error(err);
