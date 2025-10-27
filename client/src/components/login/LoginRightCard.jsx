@@ -10,6 +10,10 @@ function LoginRightCard() {
 
   const [password, setPassword] = useState("");
 
+  const [message, setMessage] = useState("");
+  const [showPopUp, setShowPopUp] = useState(false); // state for error message
+  const [timer, setTimer] = useState(null); // clear error message 
+
   const navigate = useNavigate();
 
   const { login, loading } = useContext(AuthContext);
@@ -19,8 +23,21 @@ function LoginRightCard() {
     event.preventDefault();
 
     try{
-      await login(email, password);
-      navigate("/");
+      const msg = await login(email, password);
+
+      setMessage(msg);
+
+      //reset timer if already showing
+      if (timer) clearTimeout(timer); 
+      setShowPopUp(true);
+
+      const newTimer = setTimeout(() => {
+        setShowPopUp(false);
+        if (msg === "Login successful") navigate("/");
+        setMessage("");
+      }, 3000);
+
+      setTimer(newTimer)
     } catch (err){
       alert("Invalid credentials", err);
     }
@@ -30,6 +47,9 @@ function LoginRightCard() {
     <div className="loginRightCard-container">
       <div className="loginRightCard-overlay">
         <form onSubmit={handleSubmit}>
+
+          {showPopUp && <p className="loginRightCard-context loginRightCard-context-error">{message}</p>}
+        
           <p className="loginRightCard-context">Please Enter Your Login Details</p>
 
           <label className="loginRightCard-label" htmlFor="email">

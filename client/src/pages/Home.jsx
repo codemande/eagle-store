@@ -38,7 +38,7 @@ function Home() {
     // Cleanup on unmount or user change
     return () => clearTimeout(newTimer);
     
-  }, [user]);
+  }, []);
 
   function removePopUp() {
     if(timer) clearTimeout(timer);
