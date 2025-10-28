@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import Header from "../components/Header";
-import SideMenu from "./component/sideMenu";
+import SideMenu from "./component/SideMenu";
 import { MdEdit } from "react-icons/md";
 import "../pages/styles/pages-section.css";
 import "./user.css";
