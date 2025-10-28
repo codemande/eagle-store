@@ -1,4 +1,44 @@
 .user-container{
   padding: 3rem 10%;
-  background-color: rgb(246, 246, 246)
+  background-color: rgb(246, 246, 246);
+  display: flex;
+  gap: 30px;
+}
+
+.user-second-container{
+  background-color: white;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .05);
+  width: 900px;
+}
+
+.user-second-header{
+  padding: 30px;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.user-details{
+  margin: 3rem 15px;
+}
+
+.user-second-top-card{
+  display: flex;
+  margin-top: 40px;
+  justify-content: space-evenly;
+}
+
+.user-detail-card{
+  width: 370px;
+  height: 200px;
+  border: 1px solid gray;
+}
+
+.user-detail-header{
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-detail-info{
+  padding: 30px;
 }
