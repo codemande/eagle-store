@@ -5,13 +5,24 @@ dotenv.config();
 
 const { Pool } = pkg;
 
+// const pool = new Pool({
+//   connectionString: process.env.DATABASE_URL || process.env.LOCAL_DATABASE_URL,
+//   ssl: {
+//     require: true,               // Force SSL
+//     rejectUnauthorized: false,   // Allow self-signed certs
+//   }, 
+//   // ssl: false
+// });
+
+const isProduction = process.env.NODE_ENV === "production";
+
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL || process.env.LOCAL_DATABASE_URL,
-  ssl: {
-    require: true,               // Force SSL
-    rejectUnauthorized: false,   // Allow self-signed certs
-  }, 
-  // ssl: false
+  connectionString: isProduction
+    ? process.env.DATABASE_URL
+    : process.env.LOCAL_DATABASE_URL,
+  ssl: isProduction
+    ? { rejectUnauthorized: false }   // Railway requires SSL
+    : false,                          // Local Postgres: NO SSL
 });
 
 pool.connect()

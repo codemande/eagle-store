@@ -17,11 +17,22 @@ const JWT_SECRET = process.env.JWT_SECRET;
 
 // Middleware
 app.use(cors({
-  origin: process.env.CLIENT_URL || "http://localhost:5174",
+  origin: process.env.CLIENT_URL || "http://localhost:5173",
   credentials: true
 }));
 app.use(express.json());
 app.use(cookieParser());
+
+// temporary test route to confirm DB connection on Render
+app.get("/api/test-db", async (req, res) => {
+  try {
+    const result = await pool.query("SELECT NOW()");
+    res.json({ success: true, dbTime: result.rows[0] });
+  } catch (err) {
+    console.error("DB Test Error:", err);
+    res.status(500).json({ error: err.message });
+  }
+});
 
 // Middleware to protect user routes
 function verifyUser(req, res, next) {
@@ -131,6 +142,9 @@ app.post("/api/users/login", async (req, res) => {
   try {
     // Check if user exists
     const result = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
+
+    console.log("DB result:", result.rows);
+
     const user = result.rows[0];
 
     if (!user) {
