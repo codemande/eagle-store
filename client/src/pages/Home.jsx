@@ -1,4 +1,3 @@
-import { useState, useEffect, useContext } from "react";
 import HomeFixtures from "../components/home/HomeFixtures.jsx";
 import Header from "../components/Header";
 import HomeDivider1 from "../components/home/HomeDivider1.jsx";

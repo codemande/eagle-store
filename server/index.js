@@ -1,8 +1,8 @@
 import express from "express";
+import fs from "fs";
 import path from "path";
 import cors from "cors";
 import dotenv from "dotenv";
-import pool from './db.js';
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import cookieParser from "cookie-parser";
@@ -12,8 +12,7 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 4100;
-
-const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_SECRET = process.env.JWT_SECRET || "supersecret";
 
 // Middleware
 app.use(cors({
@@ -23,258 +22,232 @@ app.use(cors({
 app.use(express.json());
 app.use(cookieParser());
 
-// temporary test route to confirm DB connection on Render
-app.get("/api/test-db", async (req, res) => {
-  try {
-    const result = await pool.query("SELECT NOW()");
-    res.json({ success: true, dbTime: result.rows[0] });
-  } catch (err) {
-    console.error("DB Test Error:", err);
-    res.status(500).json({ error: err.message });
-  }
-});
+// Serve images
+app.use('/images', express.static(path.join(process.cwd(), 'uploads/images')));
 
-// Middleware to protect user routes
+console.log("Serving images from /uploads/images");
+
+// File paths
+const productsFile = path.join(process.cwd(), "products.json");
+const usersFile = path.join(process.cwd(), "users.json");
+
+// Helper functions
+function readJSON(file) {
+  if (!fs.existsSync(file)) return [];
+  return JSON.parse(fs.readFileSync(file, "utf-8"));
+}
+
+function writeJSON(file, data) {
+  fs.writeFileSync(file, JSON.stringify(data, null, 2));
+}
+
+// Middleware to protect routes
 function verifyUser(req, res, next) {
   const token = req.cookies.userToken;
-  if (!token) {
-    return res.status(401).json({ error: "Not authorized" });
-  }
+  if (!token) return res.status(401).json({ error: "Not authorized" });
 
   try {
-    const verified = jwt.verify(token, JWT_SECRET);
-    req.user = verified;
+    req.user = jwt.verify(token, JWT_SECRET);
     next();
   } catch {
     return res.status(403).json({ error: "Invalid token" });
   }
-};
-
-// Serve local uploads only when using local mode 
-if (process.env.USE_CLOUDINARY !== "true") { 
-
-  app.use("/uploads", express.static(path.join(process.cwd(), "uploads"))); 
-
-  console.log("Serving local uploads from /uploads"); 
 }
 
-// Test database connection route
-app.get("/test-db", async (req, res) => {
+/* ===========================
+   PRODUCTS ROUTES
+=========================== */
+
+// Get all products
+app.get("/api/products", (req, res) => {
   try {
-    const result = await pool.query("SELECT NOW()");
-    res.json({ success: true, time: result.rows[0].now });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ success: false, error: err.message });
-  }
-});
-
-// Add product route
-app.post("/products", upload.single("image"), async (req, res) => {
-  try {
-    const { name, slug, description, price } = req.body;
-    
-    // Choose correct image URL depending on environment
-    let imagePath = "";
-    if (process.env.USE_CLOUDINARY === "true") {
-      imagePath = req.file.path || req.file.secure_url; // Cloudinary URL
-    } else if (req.file?.filename) {
-      imagePath = `/uploads/${req.file.filename}`; // Local file
-    }
-
-    const result = await pool.query(
-      "INSERT INTO products (name, slug, description, price, image) VALUES ($1, $2, $3, $4, $5) RETURNING *",
-      [name, slug, description, price, imagePath]
-    );
-
-    res.json({ success: true, product: result.rows[0] });
-  } catch (err) {
-    console.error( "Failed to add product:", err);
-    res.status(500).json({ error: "Failed to add product" });
-  }
-});
-
-// Route: Get all products
-app.get("/api/products", async (req, res) => {
-  try{
     const q = (req.query.query || "").toLowerCase();
-    let result;
+    let products = readJSON(productsFile);
 
     if (q) {
-      result = await pool.query(
-        'SELECT * FROM products WHERE LOWER(name) LIKE $1',
-        [`%${q}%`]
+      products = products.filter(p =>
+        p.name.toLowerCase().includes(q)
       );
-    } else {
-      result = await pool.query("SELECT * FROM products ORDER BY created_at DESC");
     }
 
-    res.json(result.rows);
+    products.sort((a, b) =>
+      new Date(b.created_at) - new Date(a.created_at)
+    );
+
+    res.json(products);
   } catch (err) {
-    console.error( "Failed to fetch products:", err);
+    console.error(err);
     res.status(500).json({ error: "Failed to fetch products" });
   }
 });
 
-// Get slug route
-app.get('/api/products/:slug', async (req, res) => {
+// Get product by slug
+app.get("/api/products/:slug", (req, res) => {
   try {
-    const { slug } = req.params;
-    const result = await pool.query(
-      'SELECT * FROM products WHERE slug = $1',
-      [slug]
-    );
-    if (result.rows.length === 0) {
-      return res.status(404).json({ error: 'Product not found' });
+    const products = readJSON(productsFile);
+    const product = products.find(p => p.slug === req.params.slug);
+
+    if (!product) {
+      return res.status(404).json({ error: "Product not found" });
     }
-    res.json(result.rows[0]);
+
+    res.json(product);
   } catch (err) {
-    console.error('Error fetching product', err);
-    res.status(500).json({ error: 'server error' });
-  }
-});
-
-
-// User Login Route
-app.post("/api/users/login", async (req, res) => {
-  const { email, password } = req.body;
-
-  try {
-    // Check if user exists
-    const result = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
-
-    console.log("DB result:", result.rows);
-
-    const user = result.rows[0];
-
-    if (!user) {
-      return res.status(401).json({ error: "Invalid email or password" });
-    }
-
-    // Compare passwords
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res.status(401).json({ error: "Invalid email or password" });
-    }
-
-    // Create a JWT token (contains user id & email)
-    const token = jwt.sign(
-      { id: user.id, email: user.email },
-      JWT_SECRET,
-      { expiresIn: "1d" } // token lasts for 1 day
-    );
-
-    // Send token as HTTP-only cookie
-    res.cookie("userToken", token, {
-      httpOnly: true,
-      sameSite: "strict",
-      secure: false, // change to true in production (HTTPS)
-    });
-
-    // Send success message and user info
-    res.json({
-      message: "Login successful",
-      user: {
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        phone: user.phone,
-      },
-    });
-
-  } catch (error) {
-    console.error("Login error:", error);
     res.status(500).json({ error: "Server error" });
   }
 });
 
-// User Logout Route
-app.post("/api/users/logout", (req, res) => {
+// Add product
+app.post("/api/products", upload.single("image"), (req, res) => {
   try {
-    // Clear the cookie by setting it to empty and expiring immediately
-    res.clearCookie("userToken", {
-      httpOnly: true,
-      sameSite: "strict",
-      secure: false, // change to true in production
-    });
+    const { name, slug, description, price } = req.body;
 
-    res.json({ message: "Logout successful" });
-  } catch (error) {
-    console.error("Logout error:", error);
-    res.status(500).json({ error: "Server error" });
+    if (!name || !slug || !description || !price) {
+      return res.status(400).json({ error: "All fields required" });
+    }
+
+    const products = readJSON(productsFile);
+
+    let imagePath = "";
+
+    if (req.file?.filename) {
+      imagePath = `/images/${req.file.filename}`;
+    }
+
+    const newProduct = {
+      id: Date.now(),
+      name,
+      slug,
+      description,
+      price: Number(price),
+      image: imagePath,
+      created_at: new Date().toISOString()
+    };
+
+    products.push(newProduct);
+    writeJSON(productsFile, products);
+
+    res.status(201).json(newProduct);
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to add product" });
   }
 });
 
+/* ===========================
+   USER ROUTES (JSON Based)
+=========================== */
 
-//User Registration Route
+// Register
 app.post("/api/users/register", async (req, res) => {
   const { name, email, phone, password } = req.body;
 
   if (!name || !email || !phone || !password) {
-    return res.status(400).json({ error: "All fields are required" });
+    return res.status(400).json({ error: "All fields required" });
   }
 
-  try {
-    // Check if user already exists
-    const userExists = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
-    if (userExists.rows.length > 0) {
-      return res.status(400).json({ error: "Email already registered" });
-    }
+  const users = readJSON(usersFile);
 
-    // Hash the password before saving
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    // Insert new user into the database
-    const newUser = await pool.query(
-      "INSERT INTO users (name, email, phone, password) VALUES ($1, $2, $3, $4) RETURNING id, name, email, phone",
-      [name, email, phone, hashedPassword]
-    );
-
-    const savedUser = newUser.rows[0];
-
-    // Create a token for the new user
-    const token = jwt.sign(
-      { id: savedUser.id, email: savedUser.email, role: "user" },
-      JWT_SECRET,
-      { expiresIn: "1d" }
-    );
-
-    // Set cookie and send success response
-    res.cookie("userToken", token, {
-      httpOnly: true,
-      sameSite: "strict",
-      secure: process.env.NODE_ENV === "production", // true if HTTPS.
-    });
-
-    return res.status(201).json({
-      message: "Registration successful",
-      user: { id: savedUser.id, name: savedUser.name, email: savedUser.email, phone: savedUser.phone },
-      token,
-    });
-  } catch (error) {
-    console.error("Error during registration:", error);
-    return res.status(500).json({ error: "Server error" });
+  if (users.find(u => u.email === email)) {
+    return res.status(400).json({ error: "Email already exists" });
   }
+
+  const hashedPassword = await bcrypt.hash(password, 10);
+
+  const newUser = {
+    id: Date.now(),
+    name,
+    email,
+    phone,
+    password: hashedPassword
+  };
+
+  users.push(newUser);
+  writeJSON(usersFile, users);
+
+  const token = jwt.sign(
+    { id: newUser.id, email: newUser.email },
+    JWT_SECRET,
+    { expiresIn: "1d" }
+  );
+
+  res.cookie("userToken", token, {
+    httpOnly: true,
+    sameSite: "strict"
+  });
+
+  res.status(201).json({
+    id: newUser.id,
+    name: newUser.name,
+    email: newUser.email,
+    phone: newUser.phone
+  });
 });
 
-// Protected route - only logged-in users can access
-app.get("/api/users/profile", verifyUser, async (req, res) => {
-  try {
-    const result = await pool.query(
-      "SELECT id, name, email, phone FROM users WHERE id = $1",
-      [req.user.id]
-    );
-    res.json(result.rows[0]);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Server error" });
+// Login
+app.post("/api/users/login", async (req, res) => {
+  const { email, password } = req.body;
+
+  const users = readJSON(usersFile);
+  const user = users.find(u => u.email === email);
+
+  if (!user) {
+    return res.status(401).json({ error: "Invalid credentials" });
   }
+
+  const isMatch = await bcrypt.compare(password, user.password);
+
+  if (!isMatch) {
+    return res.status(401).json({ error: "Invalid credentials" });
+  }
+
+  const token = jwt.sign(
+    { id: user.id, email: user.email },
+    JWT_SECRET,
+    { expiresIn: "1d" }
+  );
+
+  res.cookie("userToken", token, {
+    httpOnly: true,
+    sameSite: "strict"
+  });
+
+  res.json({
+    id: user.id,
+    name: user.name,
+    email: user.email,
+    phone: user.phone
+  });
 });
 
-// Start server
-app.listen(PORT, () => { 
-  console.log(`Server running at http://localhost:${PORT}`); 
-  console.log( 
-    process.env.USE_CLOUDINARY === "true" ? "Cloudinary mode active" : "Local upload mode active" 
-  ); 
+// Logout
+app.post("/api/users/logout", (req, res) => {
+  res.clearCookie("userToken");
+  res.json({ message: "Logged out" });
+});
+
+// Profile
+app.get("/api/users/profile", verifyUser, (req, res) => {
+  const users = readJSON(usersFile);
+  const user = users.find(u => u.id === req.user.id);
+
+  if (!user) {
+    return res.status(404).json({ error: "User not found" });
+  }
+
+  res.json({
+    id: user.id,
+    name: user.name,
+    email: user.email,
+    phone: user.phone
+  });
+});
+
+/* ===========================
+   START SERVER
+=========================== */
+
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
 });
