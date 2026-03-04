@@ -1,5 +1,6 @@
 [
   {
+    "id": "1",
     "name": "Zen Bamboo Grove",
     "slug": "zen-bamboo-grove",
     "description": "Indoor Plants",
@@ -7,6 +8,7 @@
     "image": "/images/products/zen-bamboo.jpg"
   },
   {
+    "id": "2",
     "name": "Starlight Succulent",
     "slug": "starlight-succulent",
     "description": "Indoor Plant",
@@ -14,6 +16,7 @@
     "image": "/images/products/starlight.jpg"
   },
   {
+    "id": "3",
     "name": "Silver Mist",
     "slug": "silver-mist",
     "description": "Indoor Plant",
@@ -21,6 +24,7 @@
     "image": "/images/products/silver-mist.jpg"
   },
   {
+    "id": "4",
     "name": "Dessert Bloom",
     "slug": "dessert-bloom",
     "description": "Indoor Plant",
@@ -28,6 +32,7 @@
     "image": "/images/products/dessert.jpg"
   },
   {
+    "id": "5",
     "name": "Tropical Breeze",
     "slug": "tropical-breeze",
     "description": "Indoor Plant",
@@ -35,6 +40,7 @@
     "image": "/images/products/tropical.jpg"
   },
   {
+    "id": "6",
     "name": "Golden Glow",
     "slug": "golden-glow",
     "description": "Indoor Plant",
@@ -42,6 +48,7 @@
     "image": "/images/products/golden-glow.jpg"
   },
   {
+    "id": "7",
     "name": "Succulents",
     "slug": "succulents",
     "description": "Indoor Plant",
