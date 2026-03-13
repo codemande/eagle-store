@@ -22,7 +22,7 @@ const generateAccessAndRefreshTokens = async (userId) => {
 };
 
 const registerUser = asyncHandler(async (req, res) => {
-  const { email, username, password, role } = req.body;
+  const { email, fullname, password, role } = req.body;
 
   const existedUser = await User.findOne({
     $or: [{ fullname }, { email }]
@@ -35,7 +35,7 @@ const registerUser = asyncHandler(async (req, res) => {
   const user = await User.create({
     email,
     password,
-    username,
+    fullname,
     isEmailVerified: false
   });
 
@@ -44,7 +44,7 @@ const registerUser = asyncHandler(async (req, res) => {
   user.emailVerificationToken = hashedToken;
   user.emailVerificationExpiry = tokenExpiry
 
-  await user.sav({ validateBeforeSave: false })
+  await user.save({ validateBeforeSave: false })
 
   await sendEmail(
     {
