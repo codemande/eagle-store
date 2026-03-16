@@ -1,11 +1,13 @@
 import express from "express";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 
 const app = express();
 
 // Basic configurations
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+app.use(cookieParser());
 
 // Cors configuration
 app.use(cors({
