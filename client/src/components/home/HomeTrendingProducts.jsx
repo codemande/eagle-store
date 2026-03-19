@@ -26,7 +26,7 @@ function HomeTrendingProducts() {
 
     const newTimer = setTimeout(() => {
       setShowPopUp(false);
-    }, 5000);
+    }, 3000);
 
     setTimer(newTimer)
   }
