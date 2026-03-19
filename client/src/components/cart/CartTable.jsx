@@ -7,7 +7,7 @@ import "./styles/CartTable.css"
 import CartTotals from "./CartTotals";
 
 function CartTable() {
-  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:4100";
+
   const { cart, updateQty, removeFromCart } = useCart();
 
   if (cart.length === 0) {
@@ -45,7 +45,7 @@ function CartTable() {
                   </div>
                 </td>
 
-                <td><img src={ item.image.startsWith("http") ? item.image : `${import.meta.env.VITE_API_URL || "http://localhost:4100"}${item.image}`} className="cartTable-image" alt={item.name} /></td>
+                <td><img src={ item.image } className="cartTable-image" alt={item.name} /></td>
                 <td className="cartTable-product-name"> {item.name}</td>
                 <td>${(item.price).toLocaleString()}</td>
 
