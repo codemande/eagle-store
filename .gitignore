@@ -8,3 +8,5 @@ dist
 # Ignore database backups
 backup.sql
 *.sql
+
+.note.txt
