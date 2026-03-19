@@ -9,7 +9,7 @@ import "./styles/DisplayProduct.css";
 import "./styles/ShopProduct.css";
 
 function ShopProduct() {
-  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:4100";
+  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
 
   const [params] = useSearchParams();
   const q = params.get("query") || "";
@@ -49,8 +49,8 @@ function ShopProduct() {
     setError(null);
 
     axios
-      .get(`${API_BASE_URL}/api/products`, { params: { query: q } })
-      .then((res) => setItems(res.data))
+      .get(`${API_BASE_URL}/api/v1/products`, { params: { query: q } })
+      .then((res) => setItems(res.data.data))
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
   }, [q]);
@@ -62,8 +62,6 @@ function ShopProduct() {
         <p className="shopProduct-count">Showing all 6 results</p>
         <select name="" id="" className="shopProduct-select">
           <option value="">Default sorting</option>
-          <option value="">Sort by popularity</option>
-          <option value="">Sort by average rating</option>
           <option value="">Sort by latest</option>
           <option value="">Sort by price: low to high</option>
           <option value="">Sort by price: high to low</option>
@@ -89,7 +87,7 @@ function ShopProduct() {
                 <Link to={`/product/${p.slug}`} className="displayProduct-item" key={p.id}>
                   <div className="displayProduct-image-container">
         
-                    <img className="displayProduct-image" src={ p.image.startsWith("http") ? p.image : `${import.meta.env.VITE_API_URL || "http://localhost:4100"}${p.image}`} alt={p.name} />
+                    <img className="displayProduct-image" src={ p.image } alt={p.name} />
         
                     <div className="displayProduct-cart-container">
                       <div className="displayProduct-cart-tooltip">

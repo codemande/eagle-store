@@ -16,13 +16,13 @@ function Product() {
   const [qty, setQty] = useState(1);
   const { addToCart } = useCart();
 
-  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:4100";
+  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
 
   useEffect(() => {
     axios
-      .get(`${API_BASE_URL}/api/products/${slug}`)
+      .get(`${API_BASE_URL}/api/v1/products/${slug}`)
       .then((res) => {
-        setProduct(res.data);
+        setProduct(res.data.data);
         setLoading(false);
       })
       .catch((err) => {
