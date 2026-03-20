@@ -11,7 +11,7 @@ import { upload } from "./cloudinary.js";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 4100;
+const PORT =  4100;
 const JWT_SECRET = process.env.JWT_SECRET || "supersecret";
 
 // Middleware
