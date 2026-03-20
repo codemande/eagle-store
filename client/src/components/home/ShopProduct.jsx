@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { useSearchParams, Link } from "react-router-dom";
 import useCart from "../../context/useCart";
 import { CiStar } from "react-icons/ci";
@@ -7,9 +6,9 @@ import { GiShoppingBag } from "react-icons/gi";
 import { MdClose } from "react-icons/md";
 import "./styles/DisplayProduct.css";
 import "./styles/ShopProduct.css";
+import { getProducts } from "../../services/productService";
 
 function ShopProduct() {
-  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
 
   const [params] = useSearchParams();
   const q = params.get("query") || "";
@@ -44,16 +43,23 @@ function ShopProduct() {
     };
   }, [timer]);
 
-  useEffect(() => {
-    setLoading(true);
-    setError(null);
+ useEffect(() => {
+  const fetchProducts = async () => {
+    try {
+      setLoading(true);
+      setError(null);
 
-    axios
-      .get(`${API_BASE_URL}/api/v1/products`, { params: { query: q } })
-      .then((res) => setItems(res.data.data))
-      .catch((err) => setError(err.message))
-      .finally(() => setLoading(false));
-  }, [q]);
+      const data = await getProducts(q);
+      setItems(data);
+    } catch (err) {
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchProducts();
+}, [q]);
 
   return(
     <div className="shopProduct-container">
@@ -105,7 +111,6 @@ function ShopProduct() {
                   <div className="displayProduct-description">
                     <CiStar /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" />
                     <p className="displayProduct-name">{p.name}</p>
-                    <p className="displayProduct-type">{p.description}</p>
                     <p className="displayProduct-price">${p.price.toLocaleString()}</p>
                   </div>
                 </Link>

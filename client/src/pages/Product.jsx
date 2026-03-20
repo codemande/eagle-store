@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import axios from "axios";
 import useCart from "../context/useCart";
 import Header from "../components/Header";
 import "./styles/pages-section.css";
 import HomeDivider2 from "../components/home/HomeDivider2";
 import Footer from "../components/Footer";
 import "./styles/Product.css";
+import { getProductBySlug } from "../services/productService";
 
 function Product() {
   const { slug } = useParams();
@@ -16,20 +16,25 @@ function Product() {
   const [qty, setQty] = useState(1);
   const { addToCart } = useCart();
 
-  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
-
   useEffect(() => {
-    axios
-      .get(`${API_BASE_URL}/api/v1/products/${slug}`)
-      .then((res) => {
-        setProduct(res.data.data);
-        setLoading(false);
-      })
-      .catch((err) => {
+    const fetchProduct = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const data = await getProductBySlug(slug);
+        setProduct(data);
+      } catch (err) {
         console.error(err);
         setError("Failed to load product.");
+      } finally {
         setLoading(false);
-      });
+      }
+    };
+
+    if (slug) {
+      fetchProduct();
+    }
   }, [slug]);
 
 
