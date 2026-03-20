@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { useSearchParams, Link } from "react-router-dom";
 import { CiStar } from "react-icons/ci";
 import { GiShoppingBag } from "react-icons/gi";
 import { MdClose } from "react-icons/md";
 import useCart from "../../context/useCart";
 import "./styles/DisplayProduct.css";
+import { getProducts } from "../../services/productService";
 
 function HomePopularProduct() {
-  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
 
   const [params] = useSearchParams();
   const q = params.get("query") || "";
@@ -44,14 +43,21 @@ function HomePopularProduct() {
   }, [timer]);
 
   useEffect(() => {
-    setLoading(true);
-    setError(null);
+    const fetchProducts = async () => {
+      try {
+        setLoading(true);
+        setError(null);
 
-    axios
-      .get(`${API_BASE_URL}/api/v1/products`, { params: { query: q } })
-      .then((res) => setItems(res.data.data))
-      .catch((err) => setError(err.message))
-      .finally(() => setLoading(false));
+        const data = await getProducts(q);
+        setItems(data);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
   }, [q]);
 
   return(
@@ -92,7 +98,7 @@ function HomePopularProduct() {
                   <div>
                     <CiStar /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" /><CiStar className="displayProduct-stars" />
                     <p className="displayProduct-name">{p.name}</p>
-                    <p className="displayProduct-type">{p.description}</p>
+                    {/* <p className="displayProduct-type">{p.description}</p> */}
                     <p className="displayProduct-price">${p.price.toLocaleString()}</p>
                   </div>
                 </Link>
