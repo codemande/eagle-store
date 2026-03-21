@@ -8,10 +8,10 @@ import { generateAccessAndRefreshTokens } from "./auth.controllers.js";
 
 // Register User
 const registerUser = asyncHandler(async(req, res) => {
-  const { email, username, fullname, password, role } = req.body;
+  const { email, fullname, password, role } = req.body;
 
   const existedUser = await User.findOne({
-    $or: [{ username }, { email }]
+    $or: [{ email }]
   });
 
   if(existedUser){
@@ -20,7 +20,6 @@ const registerUser = asyncHandler(async(req, res) => {
 
   const user = await User.create({
     email,
-    username,
     fullname,
     password,
     isEmailVerified: false
@@ -63,14 +62,14 @@ const registerUser = asyncHandler(async(req, res) => {
 
 // Login User
 const login = asyncHandler(async(req, res) => {
-  const { email, username, password } = req.body;
+  const { email, password } = req.body;
 
-  if ((!email && !username) || !password) {
-    throw new ApiError(400, "Email or Username and password are required");
+  if ((!email ) || !password) {
+    throw new ApiError(400, "Email and password are required");
   }
 
   const user = await User.findOne({
-    $or: [{ username }, { email }]
+    $or: [ { email }]
   });
 
   if(!user){
