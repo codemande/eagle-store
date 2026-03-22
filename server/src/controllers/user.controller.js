@@ -8,7 +8,7 @@ import { generateAccessAndRefreshTokens } from "./auth.controllers.js";
 
 // Register User
 const registerUser = asyncHandler(async(req, res) => {
-  const { email, fullname, password, role } = req.body;
+  const { email, fullname, phone, password, role } = req.body;
 
   const existedUser = await User.findOne({
     $or: [{ email }]
@@ -21,6 +21,7 @@ const registerUser = asyncHandler(async(req, res) => {
   const user = await User.create({
     email,
     fullname,
+    phone,
     password,
     isEmailVerified: false
   });
