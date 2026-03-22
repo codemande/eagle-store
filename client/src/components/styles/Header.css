@@ -309,6 +309,7 @@ li a:hover{
 .header-cart-slide-close:hover,
 .header-cart-slide-close:focus{
   border: 1px dotted rgb(219, 217, 217);
+  cursor: pointer;
 }
 
 .header-cart-slide-items{
