@@ -33,9 +33,9 @@ function LoginRightCard() {
 
       const newTimer = setTimeout(() => {
         setShowPopUp(false);
-        if (msg === "Login successful") navigate("/");
+        if (msg === "Success") navigate("/");
         setMessage("");
-      }, 3000);
+      }, 2000);
 
       setTimer(newTimer)
     } catch (err){
