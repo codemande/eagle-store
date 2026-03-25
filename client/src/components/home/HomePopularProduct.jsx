@@ -77,7 +77,7 @@ function HomePopularProduct() {
           items.slice(0, 3).map((p) => {
             return (
               <div>
-                <Link to={`/product/${p.slug}`} className="displayProduct-item" key={p.id}>
+                <Link to={`/product/${p.slug}`} className="displayProduct-item" key={p._id}>
                   <div className="displayProduct-image-container">
 
                     <img className="displayProduct-image" src={ p.image } alt={p.name} />

@@ -6,10 +6,10 @@ import "../login/styles/LoginRightCard.css";
 
 function SignUpRightCard() {
 
-  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:4100";
+  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
 
   const [formData, setFormData] = useState({
-    name: "",
+    fullname: "",
     email: "",
     phone: "",
     password: "",
@@ -34,12 +34,12 @@ function SignUpRightCard() {
 
     try{
       await axios.post(
-        `${API_BASE_URL}/api/users/register`, formData,
+        `${API_BASE_URL}/api/v1/auth/register`, formData,
         { withCredentials: true } // allows cookies from backend
       );
 
       setMessage("Registration successful!");
-      setFormData({ name: "", email: "", phone: "", password: "" });
+      setFormData({ fullname: "", email: "", phone: "", password: "" });
 
       setTimeout(() => {
         navigate("/login")
@@ -77,11 +77,11 @@ function SignUpRightCard() {
             name="password" value={formData.password} onChange={handleChange}
           />
 
-          <label className="loginRightCard-label" htmlFor="password">
+          <label className="loginRightCard-label" htmlFor="fullname">
             Full Name
           </label>
           <input className="loginRightCard-input" type="text" required
-            name="name" value={formData.name} onChange={handleChange}
+            name="fullname" value={formData.fullname} onChange={handleChange}
           />
 
           <label className="loginRightCard-label" htmlFor="password">

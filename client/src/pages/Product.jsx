@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import "./styles/pages-section.css";
 import HomeDivider2 from "../components/home/HomeDivider2";
 import Footer from "../components/Footer";
+import { MdClose } from "react-icons/md";
 import "./styles/Product.css";
 import { getProductBySlug } from "../services/productService";
 
@@ -15,6 +16,32 @@ function Product() {
   const [error, setError] = useState(null);
   const [qty, setQty] = useState(1);
   const { addToCart } = useCart();
+  const [showPopUp, setShowPopUp] = useState(false);
+  const [timer, setTimer] = useState(null);
+
+  function addIconClick() {
+    //reset timer if already showing
+    if (timer) clearTimeout(timer); 
+    setShowPopUp(true);
+
+    const newTimer = setTimeout(() => {
+      setShowPopUp(false);
+    }, 3000);
+
+    setTimer(newTimer)
+  }
+
+  function removePopUp() {
+    if(timer) clearTimeout(timer);
+    setShowPopUp(false);
+  }
+
+  // Cleanup timeout when component unmounts
+  useEffect(() => {
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
+  }, [timer]);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -60,6 +87,11 @@ function Product() {
         </div>
       </header>
 
+      {/* Add to cart notification */}
+      {showPopUp && (
+        <div className="addtocart-notification">Added Successfully <MdClose onClick={removePopUp} className="addtocart-notification-close"/></div>
+      )}
+
       <div className="product-container">
 
         <Link to="/shop" className="product-details-back-link product-info-btn" >
@@ -100,7 +132,10 @@ function Product() {
                 <button onClick={() => setQty((q) => q + 1)} className="product-info-btn">+</button>
               </div>
 
-              <button className="product-info-btn" onClick={() => addToCart(product, qty)}>
+              <button className="product-info-btn" onClick={() => {
+                addToCart(product, qty);
+                addIconClick();
+              }} >
                 Add {qty} to Cart
               </button>
             </div>

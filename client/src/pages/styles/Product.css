@@ -77,6 +77,7 @@
 
 .product-info-btn:hover{
   background-color: hsla(95, 66%, 27%, 0.99);
+  cursor: pointer;
 }
 
 .product-info-qty-count{

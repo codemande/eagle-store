@@ -4,7 +4,7 @@ import AuthContext from "./AuthContext";
 
 export const AuthProvider = ({ children }) => {
 
-  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:4100";
+  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
 
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     async function verifyUser() {
       try {
-        const res = await axios.get(`${API_BASE_URL}/api/users/profile`, {
+        const res = await axios.get(`${API_BASE_URL}/api/v1/auth/current-user`, {
           withCredentials: true, // send cookies
         });
         setUser(res.data);
@@ -30,12 +30,12 @@ export const AuthProvider = ({ children }) => {
   async function login(email, password) {
     try{
       const res = await axios.post(
-      `${API_BASE_URL}/api/users/login`,
+      `${API_BASE_URL}/api/v1/auth/login`,
         { email, password },
         { withCredentials: true }
       );
-      setUser(res.data.user);
-      localStorage.setItem("user", JSON.stringify(res.data.user));
+      setUser(res.data.data);
+      localStorage.setItem("user", JSON.stringify(res.data.data));
       return res.data.message;
     } catch(error){
       return error.response?.data?.error || "Login failed";
@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }) => {
 
   async function logout() {
     try{
-      const res = await axios.post(`${API_BASE_URL}/api/users/logout`, {}, { withCredentials: true });
+      const res = await axios.post(`${API_BASE_URL}/api/v1/auth/logout`, {}, { withCredentials: true });
       setUser(null);
       localStorage.removeItem("user");
       return res.data.message;

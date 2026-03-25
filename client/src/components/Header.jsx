@@ -193,7 +193,7 @@ function Header() {
           <p className="header-cart-slide-content">No products in the cart.</p> :
             cart.map((item) => {
               return (
-                <div key={item.id}>
+                <div key={item._id}>
                   <div className="cart-slide-items-container">
                     <div className="cart-slide-image-container">
                       <img src={ item.image } alt={item.name} className="cart-slide-item-image"/>
@@ -203,7 +203,7 @@ function Header() {
                       </div>
                     </div>
                     <div className="cart-slide-item-remove">
-                      <CloseIcon style={{fontSize: "small", color: "#ddd"}} onClick={() => removeFromCart(item.id)}/>
+                      <CloseIcon style={{fontSize: "small", color: "#ddd", cursor: "pointer"}} onClick={() => removeFromCart(item._id)}/>
                     </div>
                   </div>
                   <hr style={{border: "1px solid #e9e9e9ff"}} />

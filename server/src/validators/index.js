@@ -8,12 +8,22 @@ const userRegisterValidator = () => {
       .withMessage("Email is required")
       .isEmail()
       .withMessage("Email is invalid"),
+
     body("fullname")
       .trim()
       .notEmpty()
       .withMessage("Fullname is required")
       .isLength({ min: 3 })
       .withMessage("Fullname must be at least 3 characters"),
+
+     body("phone")
+      .trim()
+      .notEmpty()
+      .withMessage("Phone number is required")
+      .customSanitizer((value) => value.replace(/[^\d+]/g, "")) 
+      .matches(/^\+?[1-9]\d{7,14}$/)
+      .withMessage("Phone number must be valid (international format)"),
+
     body("password")
       .trim()
       .notEmpty()

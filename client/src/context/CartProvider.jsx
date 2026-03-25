@@ -18,10 +18,10 @@ function CartProvider({ children }) {
     setCart((prev) => {
 
       //if product already exist in cart
-      const existing = prev.find((item) => item.id === product.id);
+      const existing = prev.find((item) => item._id === product._id);
       if (existing) {
         return prev.map((item) =>
-          item.id === product.id ? { ...item, qty: item.qty + qty } : item
+          item._id === product._id ? { ...item, qty: item.qty + qty } : item
         );
       }
 
@@ -31,22 +31,22 @@ function CartProvider({ children }) {
   }
 
   //Update quantity directly
-  function updateQty(id, qty) {
+  function updateQty(_id, qty) {
     if(qty <= 0) {
-      return removeFromCart(id);
+      return removeFromCart(_id);
     }
 
     setCart((prev) =>
       prev.map((item) =>
-        item.id === id ? { ...item, qty } : item
+        item._id === _id ? { ...item, qty } : item
       )
     );
   }
 
   //Remove from cart
-  function removeFromCart(id) {
+  function removeFromCart(_id) {
     setCart((prev) =>
-      prev.filter((item) => item.id !== id)
+      prev.filter((item) => item._id !== _id)
     );
   }
 
