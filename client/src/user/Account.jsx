@@ -17,10 +17,10 @@ function Account() {
       <header className="pages-header" style={{backgroundImage: "url(/account-header.jpg)"}}>
         <div className="pages-header-overlay">
           <Header/>
-          {/* <div className="pages-title-container">
-            <h1>CART</h1>
-            <p>We’re Grateful for your Order</p>
-          </div> */}
+          <div className="pages-title-container">
+            <h1>ACCOUNT</h1>
+            <p>Hey {user.user.fullname}! Your account, your rules</p>
+          </div>
         </div>
       </header>
       <div className="user-container">
@@ -38,12 +38,12 @@ function Account() {
               <div className="user-detail-card">
                 <div className="user-detail-header">Account Name</div>
                 <hr />
-                <div className="user-detail-info"> {user.name} </div>
+                <div className="user-detail-info"> {user.user.fullname} </div>
               </div>
               <div className="user-detail-card">
                 <div className="user-detail-header">Email Address</div>
                 <hr />
-                <div className="user-detail-info"> {user.email} </div>
+                <div className="user-detail-info"> {user.user.email} </div>
               </div>
             </div>
 
@@ -52,7 +52,7 @@ function Account() {
               <div className="user-detail-card">
                 <div className="user-detail-header">Phone Number</div>
                 <hr />
-                <div className="user-detail-info"> {user.phone} </div>
+                <div className="user-detail-info"> {user.user.phone} </div>
               </div>
               <div className="user-detail-card">
                 <div className="user-detail-header">Address Book <MdEdit style={{fontSize: "20px", cursor: "pointer"}}/></div>
