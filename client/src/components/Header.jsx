@@ -66,7 +66,7 @@ function Header() {
             <li><Link to="/about">About</Link></li>
             <li><Link to="/contact">Contact</Link></li>
 
-            <li onClick={() => setUserOpen(prev => !prev)}>
+            {/* <li onClick={() => setUserOpen(prev => !prev)}>
               {!user ?
                 <Link to="/login"><FaUserAlt style={{fontSize: "18px"}}/></Link> : 
                 (<div>
@@ -97,7 +97,7 @@ function Header() {
               )}
               
               
-            </li>
+            </li> */}
           </ul>
           
           <span className="header-link-socials links">
@@ -157,7 +157,7 @@ function Header() {
             </span>
             Cart
           </Link>
-          <Link to="/login" className="cart-link-mobile"><FaUserAlt style={{fontSize: "18px"}}/> Account </Link>
+          {/* <Link to="/login" className="cart-link-mobile"><FaUserAlt style={{fontSize: "18px"}}/> Account </Link> */}
 
           {cartOpen && <div className="header-cart-slide-container">
             <div className="header-cart-slide-header">
