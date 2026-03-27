@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import { Navigate, useLocation } from "react-router-dom";
+// import { useContext } from "react";
+// import { Navigate, useLocation } from "react-router-dom";
 
 import Header from "../components/Header";
 import CheckoutForm from "../components/checkout/CheckoutForm.jsx";
@@ -13,17 +13,17 @@ import "./styles/pages-section.css";
 
 function Checkout() {
   // Access the user from your AuthContext
-  const { user } = useContext(AuthContext);
+  // const { user } = useContext(AuthContext);
   
   // Get the current location for a better user experience
-  const location = useLocation();
+  // const location = useLocation();
 
   // If there is no user, redirect to login immediately
-  if (!user) {
+  // if (!user) {
     // Pass the current location ('/checkout') in state 
     // so the Login page knows where to send them back to!
-    return <Navigate to="/login" state={{ from: location }} replace />;
-  }
+    // return <Navigate to="/login" state={{ from: location }} replace />;
+  // }
 
   // If there is a user, render the checkout page as normal
   return(

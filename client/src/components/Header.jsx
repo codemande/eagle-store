@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import useCart from "../context/useCart";
 import { FaFacebook, FaInstagram, FaYoutube, FaShoppingCart } from "react-icons/fa";
@@ -14,12 +14,12 @@ import './styles/Header.css';
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false); 
   const [cartOpen, setCartOpen] = useState(false);
-  const [userOpen, setUserOpen] = useState(false);
-  const [message, setMessage] = useState(" ");
-  const [showPopUp, setShowPopUp] = useState(false);//logout notification
-  const [timer, setTimer] = useState(null);// clear logout notification
+  // const [userOpen, setUserOpen] = useState(false);
+  // const [message, setMessage] = useState(" ");
+  // const [showPopUp, setShowPopUp] = useState(false);//logout notification
+  // const [timer, setTimer] = useState(null);// clear logout notification
   const { cart, removeFromCart } = useCart();
-  const { user, logout } = useContext(AuthContext);
+  // const { user, logout } = useContext(AuthContext);
 
   //count total quantity instead of cart.length
   const cartCount = cart.reduce((sum, item) => sum + item.qty, 0);
@@ -27,27 +27,27 @@ function Header() {
   // calculate total price
   const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 
-  async function handleLogout() {
-    const msg = await logout();
-    setMessage(msg);
+  // async function handleLogout() {
+  //   const msg = await logout();
+  //   setMessage(msg);
 
-    //reset timer if already showing
-    if (timer) clearTimeout(timer); 
-    setShowPopUp(true);
+  //   //reset timer if already showing
+  //   if (timer) clearTimeout(timer); 
+  //   setShowPopUp(true);
 
-    const newTimer = setTimeout(() => {
-      setShowPopUp(false);
-      setMessage("");
-    }, 5000);
+  //   const newTimer = setTimeout(() => {
+  //     setShowPopUp(false);
+  //     setMessage("");
+  //   }, 5000);
 
-    setTimer(newTimer)
-  }
+  //   setTimer(newTimer)
+  // }
 
-  function removePopUp() {
-    if(timer) clearTimeout(timer);
-    setShowPopUp(false);
-    setMessage("");
-  }
+  // function removePopUp() {
+  //   if(timer) clearTimeout(timer);
+  //   setShowPopUp(false);
+  //   setMessage("");
+  // }
 
   return (
     <header className="header-desktop-header">
